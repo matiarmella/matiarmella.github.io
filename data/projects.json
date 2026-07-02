@@ -1,0 +1,47 @@
+{
+  "_comment": "Active research projects. status: 'active' or 'closed'. role uses en/es.",
+  "items": [
+    {
+      "status": "active",
+      "title": { "en": "Native ungulates of the Neogene of NW Argentina: records from the southeastern third, regional diversity and palaeodietary inferences",
+                 "es": "Ungulados nativos del Neógeno del NOA: registros del tercio sudoriental, diversidad regional e inferencias paleodietarias" },
+      "funder": "PICT 2021 · ANPIDTYI",
+      "role": { "en": "Principal Investigator", "es": "Director" }
+    },
+    {
+      "status": "active",
+      "title": { "en": "Valorization of the paleontological heritage of Catamarca Province: diversity, rescue and conservation of fossil vertebrates from Sierra de Ancasti",
+                 "es": "Valoración del patrimonio paleontológico de la Provincia de Catamarca: diversidad, rescate y conservación de vertebrados fósiles de la Sierra de Ancasti" },
+      "funder": "PIDI 2024 02/Q263 · Universidad Nacional de Catamarca",
+      "role": { "en": "Principal Investigator", "es": "Director" }
+    },
+    {
+      "status": "active",
+      "title": { "en": "South American native ungulates from the late Neogene of NW Argentina: dietary inferences using tooth wear methods",
+                 "es": "Ungulados nativos sudamericanos del Neógeno tardío del NOA: inferencias dietarias mediante métodos de desgaste dental" },
+      "funder": "Sepkoski Grant · Paleontological Society (USA)",
+      "role": { "en": "Principal Investigator", "es": "Director" }
+    },
+    {
+      "status": "active",
+      "title": { "en": "Cenozoic vertebrates of NW Argentina: taxonomy, communities, paleoenvironmental reconstruction, and paleontological heritage valorization",
+                 "es": "Vertebrados cenozoicos del NOA: taxonomía, comunidades, reconstrucción paleoambiental y valoración del patrimonio paleontológico" },
+      "funder": "PIUNT G737 · Universidad Nacional de Tucumán",
+      "role": { "en": "Co-investigator", "es": "Investigador" }
+    },
+    {
+      "status": "active",
+      "title": { "en": "Morphological studies, phylogeny and biochronology of the fauna of the Río Loro Formation, Paleogene of Tucumán Province",
+                 "es": "Estudios morfológicos, filogenia y biocronología de la fauna de la Formación Río Loro, Paleógeno de la provincia de Tucumán" },
+      "funder": "PICT-2020-SERIEA-03651",
+      "role": { "en": "Co-investigator", "es": "Investigador" }
+    },
+    {
+      "status": "active",
+      "title": { "en": "Late Neogene of the Villavil-Quillay Basin, Belén, Catamarca: evolution of mammal communities and paleoenvironmental reconstruction",
+                 "es": "El Neógeno tardío de la cuenca Villavil-Quillay, Belén, Catamarca: evolución de las comunidades de mamíferos y reconstrucción paleoambiental" },
+      "funder": "PICT-2019-03412",
+      "role": { "en": "Co-investigator", "es": "Investigador" }
+    }
+  ]
+}

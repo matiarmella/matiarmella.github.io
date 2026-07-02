@@ -1,0 +1,50 @@
+[
+  {
+    "num": "01",
+    "title": { "en": "Systematics & Phylogeny", "es": "Sistemática y filogenia" },
+    "desc": {
+      "en": "Comparative anatomical description and phylogenetic analyses of South American native ungulates, with emphasis on Notoungulata (Mesotheriidae, Hegetotheriidae, Toxodontidae) and Litopterna (Proterotheriidae). Character matrix development and analyses in TNT, Mesquite, and R.",
+      "es": "Descripción anatómica comparada y análisis filogenéticos de ungulados nativos sudamericanos, con énfasis en Notoungulata (Mesotheriidae, Hegetotheriidae, Toxodontidae) y Litopterna (Proterotheriidae). Desarrollo de matrices de caracteres y análisis en TNT, Mesquite y R."
+    }
+  },
+  {
+    "num": "02",
+    "title": { "en": "Biostratigraphy & Paleobiogeography", "es": "Bioestratigrafía y paleobiogeografía" },
+    "desc": {
+      "en": "Dating and correlation of fossiliferous units from the Neogene and Paleogene of NW Argentina. Reconstruction of the biogeographic history of native ungulates in the context of Andean uplift and the sedimentary basins of the Argentine northwest.",
+      "es": "Datación y correlación de unidades fosilíferas del Neógeno y Paleógeno del NOA. Reconstrucción de la historia biogeográfica de los ungulados nativos en el contexto del levantamiento andino y las cuencas sedimentarias del noroeste argentino."
+    }
+  },
+  {
+    "num": "03",
+    "title": { "en": "Paleobiology & Paleoecology", "es": "Paleobiología y paleoecología" },
+    "desc": {
+      "en": "Inferences about diet, locomotion, and ecology of extinct species through dental microwear analysis, functional postcranial morphometrics, and ecomorphological reconstructions — drawing comparisons with extant mammals worldwide.",
+      "es": "Inferencias sobre dieta, locomoción y ecología de especies extintas mediante microdesgaste dental, morfometría postcraneana funcional y reconstrucciones ecomorfológicas, en comparación con mamíferos actuales de todo el mundo."
+    }
+  },
+  {
+    "num": "04",
+    "title": { "en": "Fieldwork & Technology", "es": "Trabajo de campo y tecnología" },
+    "desc": {
+      "en": "Paleontological prospection across multiple localities in NW Argentina. Proficient in CT scanning, photogrammetry, 3D printing, GIS (QGIS), and drones for surveying and documenting fossil sites.",
+      "es": "Prospección paleontológica en numerosas localidades del NOA. Manejo de tomografía computada, fotogrametría, impresión 3D, SIG (QGIS) y drones para relevar y documentar sitios fosilíferos."
+    }
+  },
+  {
+    "num": "05",
+    "title": { "en": "Paleontological Heritage", "es": "Patrimonio paleontológico" },
+    "desc": {
+      "en": "Survey, conservation, and valorization of the paleontological heritage of Catamarca Province. Paleontological impact assessments for infrastructure projects. Science outreach in schools and local communities.",
+      "es": "Relevamiento, conservación y valoración del patrimonio paleontológico de la Provincia de Catamarca. Evaluaciones de impacto paleontológico para obras de infraestructura. Divulgación científica en escuelas y comunidades locales."
+    }
+  },
+  {
+    "num": "06",
+    "title": { "en": "Training & Mentoring", "es": "Formación y dirección" },
+    "desc": {
+      "en": "Supervision of undergraduate theses and doctoral dissertations. Postgraduate courses and internships in Argentina and Peru.",
+      "es": "Dirección de tesinas de grado y tesis doctorales. Cursos de posgrado y pasantías en Argentina y Perú."
+    }
+  }
+]

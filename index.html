@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matías A. Armella — Vertebrate Paleontologist</title>
+  <meta name="description" content="Matías A. Armella — vertebrate paleontologist (CONICET, NW Argentina). Get to know who I am, what I do, my projects and how to get in touch." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%A6%B4%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600&family=Sometype+Mono:wght@400;500&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="nav-brand">Matías A. Armella</a>
+  <div class="nav-right">
+    <ul class="nav-links" id="nav-links"></ul>
+    <div class="nav-social" id="nav-social"></div>
+    <button class="lang-btn" id="lang-btn" aria-label="Switch language"></button>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- PERSISTENT MOVING BAND (shown on every tab) -->
+<section id="field">
+  <div class="band-head">
+    <div class="band-eyebrow" data-label="field"></div>
+    <p class="band-sub" data-subtitle="field"></p>
+  </div>
+  <div class="band-track" id="band-track"></div>
+</section>
+
+<main id="views">
+
+  <!-- HOME -->
+  <section class="view" id="home">
+    <div class="home-hero">
+      <div class="home-hero-bg" id="home-bg"></div>
+      <div class="home-inner">
+        <div class="home-text">
+          <div class="hero-eyebrow fade-in" id="home-eyebrow"></div>
+          <h1 class="fade-in delay-1" id="home-title"></h1>
+          <p class="home-phrase fade-in delay-2" id="home-phrase"></p>
+          <div class="home-ctas fade-in delay-3" id="home-ctas"></div>
+          <div class="home-social fade-in delay-4" id="home-social"></div>
+        </div>
+        <div class="home-portrait fade-in delay-2" id="home-portrait"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="view" id="about">
+    <div class="section-inner">
+      <div class="section-label" data-label="about"></div>
+      <div class="about-grid">
+        <div class="about-text">
+          <h2 id="about-heading"></h2>
+          <div id="about-paragraphs"></div>
+          <ul class="positions-list" id="about-positions"></ul>
+        </div>
+        <div class="about-right">
+          <div class="about-photo" id="about-photo"></div>
+          <div>
+            <p class="tags-label" data-label="researchInterests"></p>
+            <div class="interests-grid" id="about-interests"></div>
+          </div>
+        </div>
+      </div>
+      <p class="tags-label group-label" data-label="personalGroup"></p>
+      <div class="photo-grid" id="personal-grid"></div>
+    </div>
+  </section>
+
+  <!-- WHAT I DO -->
+  <section class="view" id="dedico">
+    <div class="section-inner">
+      <div class="section-label" data-label="dedico"></div>
+      <h2 data-title="dedico"></h2>
+      <p class="field-sub" data-subtitle="dedico"></p>
+      <p class="tags-label group-label" data-label="researchAreas"></p>
+      <div class="research-grid" id="research-grid"></div>
+      <p class="tags-label group-label" data-label="fieldworkGroup"></p>
+      <div class="photo-grid" id="fieldwork-grid"></div>
+      <p class="tags-label group-label" data-label="labGroup"></p>
+      <div class="photo-grid" id="lab-grid"></div>
+      <p class="tags-label group-label" data-label="collections"></p>
+      <div class="photo-grid" id="collections-grid"></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="view" id="projects">
+    <div class="section-inner">
+      <div class="section-label" data-label="projects"></div>
+      <h2 data-title="projects"></h2>
+      <div class="proj-grid" id="proj-grid"></div>
+    </div>
+  </section>
+
+  <!-- OUTREACH -->
+  <section class="view" id="outreach">
+    <div class="section-inner">
+      <div class="section-label" data-label="outreach"></div>
+      <h2 data-title="outreach"></h2>
+      <p class="field-sub" data-subtitle="outreach"></p>
+      <p class="tags-label group-label" data-label="mediaGroup"></p>
+      <div class="media-grid" id="media-grid"></div>
+      <div class="teaching-grid">
+        <div class="teaching-block"><h3 data-label="currentTeaching"></h3><div id="teaching-positions"></div></div>
+        <div class="teaching-block"><h3 data-label="studentSupervision"></h3><div id="teaching-supervision"></div></div>
+      </div>
+      <div class="photo-grid" id="outreach-grid"></div>
+    </div>
+  </section>
+
+  <!-- SOME CONTRIBUTIONS -->
+  <section class="view" id="contrib">
+    <div class="section-inner">
+      <div class="section-label" data-label="contrib"></div>
+      <h2 data-title="contrib"></h2>
+      <p class="field-sub" data-subtitle="contrib"></p>
+      <div class="contrib-list" id="contrib-list"></div>
+      <details class="formal-list">
+        <summary data-label="fullList"></summary>
+        <div class="pub-list" id="pub-list"></div>
+      </details>
+      <div class="cv-row" id="cv-row"></div>
+    </div>
+  </section>
+
+  <!-- DATA & RESOURCES -->
+  <section class="view" id="datos">
+    <div class="section-inner">
+      <div class="section-label" data-label="datos"></div>
+      <h2 data-title="datos"></h2>
+      <p class="field-sub" data-subtitle="datos"></p>
+      <div class="under-construction">
+        <img class="uc-img" src="photos/under_construction.png" alt="Under construction" />
+        <div class="uc-sub" data-label="underConstructionSub"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="view" id="contact">
+    <div class="section-inner">
+      <div class="section-label" data-label="contact"></div>
+      <h2 data-title="contact"></h2>
+      <div class="contact-grid">
+        <div>
+          <p class="contact-quote" id="contact-quote"></p>
+          <div class="contact-photo" id="contact-photo"></div>
+        </div>
+        <div class="contact-details" id="contact-details"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>&copy; <span id="year"></span> Dr. Matías A. Armella</span>
+  <span class="visit-counter" id="visit-counter" hidden>
+    <span class="vc-dot"></span><span class="vc-num" id="vc-num">—</span>&nbsp;<span data-label="visits"></span>
+  </span>
+  <span>Paleontology · CONICET · NW Argentina</span>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <span class="lb-close" id="lb-close">✕ CLOSE</span>
+  <img id="lb-img" src="" alt="" />
+  <span class="lb-cap" id="lb-cap"></span>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

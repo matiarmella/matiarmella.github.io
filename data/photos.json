@@ -1,0 +1,64 @@
+{
+  "_comment": "Images. hero/about = single photos. band = the moving photo band (shown on every tab). personal = Sobre mí gallery. fieldwork/lab/collections = 'A qué me dedico' galleries. outreach = Divulgación accents. heroBg = faint background of the Home hero. TO ADD A PHOTO: drop the file in /photos (+ /photos/thumb if it goes in the band), then add a line with its 'src' and a caption.",
+  "heroBg": "photos/vacation_chile_01.jpg",
+  "hero": { "src": "photos/PPlano_08.jpg", "alt": "Matías Armella during fieldwork in the badlands of northwestern Argentina" },
+  "about": { "src": "photos/PPlano_06.jpg", "alt": "Matías Armella" },
+  "contact": { "src": "photos/contact_01.jpg", "alt": "Matías Armella" },
+  "band": [
+    { "src": "photos/thumb/paisaje_03.jpg", "caption": { "en": "The Puna of Catamarca", "es": "La Puna de Catamarca" } },
+    { "src": "photos/thumb/Field_05.jpg", "caption": { "en": "Tools of the trade", "es": "Herramientas del oficio" } },
+    { "src": "photos/thumb/campo_01.jpg", "caption": { "en": "Prospecting in Antofalla", "es": "Prospección en Antofalla" } },
+    { "src": "photos/thumb/Estudiantes_01.jpg", "caption": { "en": "Fieldwork with students", "es": "Campo con estudiantes" } },
+    { "src": "photos/thumb/Field_06.jpg", "caption": { "en": "Excavating a fossil site", "es": "Excavando un sitio fosilífero" } },
+    { "src": "photos/thumb/paisaje_02.jpg", "caption": { "en": "Crossing the Andes", "es": "Cruzando los Andes" } },
+    { "src": "photos/thumb/Field_03.jpg", "caption": { "en": "Surveying the badlands", "es": "Relevando los badlands" } },
+    { "src": "photos/thumb/comida_01.jpg", "caption": { "en": "Asado after a long day", "es": "Asado después de un largo día" } },
+    { "src": "photos/thumb/Estudiantes_02.jpg", "caption": { "en": "A field trip from above", "es": "Una salida de campo desde el aire" } },
+    { "src": "photos/thumb/Personal_01.jpg", "caption": { "en": "On the road, Quebrada de Humahuaca", "es": "En la ruta, Quebrada de Humahuaca" } },
+    { "src": "photos/thumb/Field_07.jpg", "caption": { "en": "Into the ravines", "es": "Entre las quebradas" } },
+    { "src": "photos/thumb/paisaje_01.jpg", "caption": { "en": "Encalilla, Tucumán", "es": "Encalilla, Tucumán" } },
+    { "src": "photos/thumb/Field_02.jpg", "caption": { "en": "Out in the field", "es": "En el campo" } },
+    { "src": "photos/thumb/Personal_02.jpg", "caption": { "en": "The scale of the landscape", "es": "La escala del paisaje" } }
+  ],
+  "personal": [
+    { "src": "photos/ventana_01.jpg", "caption": { "en": "A window in the Quebrada", "es": "Una ventana en la Quebrada" } },
+    { "src": "photos/carnaval_01.jpg", "caption": { "en": "Carnaval in the highlands", "es": "Carnaval en la Quebrada" } },
+    { "src": "photos/vacation_chile_02.jpg", "caption": { "en": "Potrerillos, Mendoza", "es": "Potrerillos, Mendoza" } },
+    { "src": "photos/raki_01.jpg", "caption": { "en": "A break from fossils", "es": "Una pausa de los fósiles" } },
+    { "src": "photos/carnaval_02.jpg", "caption": { "en": "Craft stalls, Quebrada de Humahuaca", "es": "Puestos de artesanías, Quebrada de Humahuaca" } },
+    { "src": "photos/camper_01.jpg", "caption": { "en": "Life on the road", "es": "La vida en la ruta" } },
+    { "src": "photos/caravan_01.jpg", "caption": { "en": "A caravan getaway", "es": "Escapada en casilla rodante" } },
+    { "src": "photos/quebrada_01.jpg", "caption": { "en": "The fourteen colours, Quebrada de Humahuaca", "es": "Los catorce colores, Quebrada de Humahuaca" } },
+    { "src": "photos/quebrada_02.jpg", "caption": { "en": "Exploring with Clari", "es": "Explorando con Clari" } }
+  ],
+  "fieldwork": [
+    { "src": "photos/fossil_01.jpg", "caption": { "en": "A fossil in the field", "es": "Un fósil en el campo" } },
+    { "src": "photos/fossil_02.jpg", "caption": { "en": "Fossil in hand, Antofalla", "es": "Fósil en mano, Antofalla" } },
+    { "src": "photos/rescate_01.jpg", "caption": { "en": "A fossil rescue in Angastaco", "es": "Un rescate paleontológico en Angastaco" } },
+    { "src": "photos/fossil_03.jpg", "caption": { "en": "A fossil in situ, Catamarca fieldwork", "es": "Un fósil in situ, campaña en Catamarca" } }
+  ],
+  "lab": [
+    { "src": "photos/Lab_02.jpg", "caption": { "en": "A notoungulate skull in the lab", "es": "Un cráneo de notoungulado en el laboratorio" } },
+    { "src": "photos/Field_04.jpg", "caption": { "en": "A fossil emerging from the rock", "es": "Un fósil emergiendo de la roca" } },
+    { "src": "photos/Lab_06.jpg", "caption": { "en": "Moulding teeth for microwear", "es": "Moldeando dientes para microdesgaste" } },
+    { "src": "photos/Lab_04.jpg", "caption": { "en": "Comparative collections", "es": "Colecciones comparativas" } },
+    { "src": "photos/Lab_01.jpg", "caption": { "en": "Specimen study", "es": "Estudio de ejemplares" } },
+    { "src": "photos/Lab_03.jpg", "caption": { "en": "Under the stereoscope", "es": "Bajo el estereoscopio" } }
+  ],
+  "collections": [
+    { "src": "photos/colecc_02.jpg", "caption": { "en": "Among giants — Field Museum", "es": "Entre gigantes — Field Museum" } },
+    { "src": "photos/colecc_05.jpg", "caption": { "en": "Megafauna up close", "es": "Megafauna de cerca" } },
+    { "src": "photos/colecc_03.jpg", "caption": { "en": "Reference collections abroad", "es": "Colecciones de referencia en el exterior" } }
+  ],
+  "outreach": [
+    { "src": "photos/escuela_01.jpg", "caption": { "en": "Public education", "es": "Educación pública" } },
+    { "src": "photos/activism_01.jpg", "caption": { "en": "Student assembly, 2013", "es": "Asamblea estudiantil, 2013" } },
+    { "src": "photos/viaje_2018.jpg", "caption": { "en": "Field trip with students, 2018", "es": "Salida de campo con estudiantes, 2018" } },
+    { "src": "photos/viaje_2019.jpg", "caption": { "en": "A field class in the rocks, 2019", "es": "Clase de campo entre las rocas, 2019" } },
+    { "src": "photos/angastaco_2022.jpg", "caption": { "en": "Fieldwork crew, Angastaco 2022", "es": "Equipo de campo, Angastaco 2022" } },
+    { "src": "photos/drone_spiral.jpg", "caption": { "en": "A human spiral, from the drone", "es": "Una espiral humana, desde el drone" } },
+    { "src": "photos/campo_grupo.jpg", "caption": { "en": "Out in the field with the group", "es": "En el campo con el grupo" } },
+    { "src": "photos/asamblea_2013.jpg", "caption": { "en": "At the student assembly, 2013", "es": "En la asamblea estudiantil, 2013" } },
+    { "src": "photos/arbol_2024.jpg", "caption": { "en": "A break under the tree, 2024", "es": "Una pausa bajo el árbol, 2024" } }
+  ]
+}

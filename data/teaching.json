@@ -1,0 +1,37 @@
+{
+  "_comment": "Two columns: 'positions' (courses/appointments) and 'supervision' (students). period uses en/es when it carries words like 'Since' or 'Ongoing'.",
+  "positions": [
+    { "role": { "en": "Associate Professor (Regular) — Paleontology", "es": "Profesor Adjunto Regular — Paleontología" },
+      "inst": { "en": "Facultad de Ciencias Exactas y Naturales, UNCa", "es": "Facultad de Ciencias Exactas y Naturales, UNCa" },
+      "period": { "en": "Since 2020", "es": "Desde 2020" } },
+    { "role": { "en": "Teaching Assistant (Regular) — Paleontology", "es": "Auxiliar Docente Regular — Paleontología" },
+      "inst": { "en": "Facultad de Ciencias Naturales e IML, UNT", "es": "Facultad de Ciencias Naturales e IML, UNT" },
+      "period": { "en": "Since 2021", "es": "Desde 2021" } },
+    { "role": { "en": "Fossil Vertebrates", "es": "Vertebrados fósiles" },
+      "inst": { "en": "Elective course — UNT", "es": "Materia de especialidad — UNT" },
+      "period": { "en": "2025", "es": "2025" } },
+    { "role": { "en": "Paleobiology: An Evolutionary Perspective on the History of Life", "es": "Paleobiología: una perspectiva evolutiva de la historia de la vida" },
+      "inst": { "en": "Elective course — UNT", "es": "Materia de especialidad — UNT" },
+      "period": { "en": "2024", "es": "2024" } },
+    { "role": { "en": "Biotic Innovations and Revolutions of the Phanerozoic", "es": "Innovaciones y revoluciones bióticas del Fanerozoico" },
+      "inst": { "en": "Postgraduate course — UNT", "es": "Curso de posgrado — UNT" },
+      "period": { "en": "2024–2025", "es": "2024–2025" } }
+  ],
+  "supervision": [
+    { "role": { "en": "PhD thesis (ongoing) — Lic. Daiana E. Rearte", "es": "Tesis doctoral (en curso) — Lic. Daiana E. Rearte" },
+      "inst": { "en": "Postcranium of xenarthrans and native ungulates, Late Neogene, NW Argentina — UNT / CONICET", "es": "Postcráneo de xenartros y ungulados nativos, Neógeno tardío, NOA — UNT / CONICET" },
+      "period": { "en": "Supervisor · Ongoing", "es": "Director · En curso" } },
+    { "role": { "en": "Undergraduate thesis (completed) — Prof. Daiana E. Rearte", "es": "Tesina de grado (finalizada) — Prof. Daiana E. Rearte" },
+      "inst": { "en": "Tardigrada (Xenarthra) from SW Catamarca — UNCa", "es": "Tardigrada (Xenarthra) del SO de Catamarca — UNCa" },
+      "period": { "en": "Supervisor · 2024", "es": "Director · 2024" } },
+    { "role": { "en": "Undergraduate thesis (ongoing) — Günther P. Ortiz Tempel", "es": "Tesina de grado (en curso) — Günther P. Ortiz Tempel" },
+      "inst": { "en": "Mesotheriidae from Catamarca — UNT", "es": "Mesotheriidae de Catamarca — UNT" },
+      "period": { "en": "Supervisor · Ongoing", "es": "Director · En curso" } },
+    { "role": { "en": "Undergraduate thesis (completed) — Agostina Ferro", "es": "Tesina de grado (finalizada) — Agostina Ferro" },
+      "inst": { "en": "Archaeohyracidae (Notoungulata) — UNT", "es": "Archaeohyracidae (Notoungulata) — UNT" },
+      "period": { "en": "Co-supervisor · 2022", "es": "Codirector · 2022" } },
+    { "role": { "en": "CIN Research Fellowships (2 students)", "es": "Becas EVC-CIN (2 estudiantes)" },
+      "inst": { "en": "2021 call — UNCa", "es": "Convocatoria 2021 — UNCa" },
+      "period": { "en": "Supervisor", "es": "Director" } }
+  ]
+}
