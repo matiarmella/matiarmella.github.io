@@ -7,7 +7,7 @@
       "enabled": true,
       "provider": "counterapi",
       "namespace": "matiarmella-web",
-      "key": "visits",
+      "key": "visits2",
       "startAt": 100
     },
     "cvEnabled": false,
