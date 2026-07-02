@@ -1,79 +1,202 @@
 {
   "_comment": "Your identity, bio and contact. Bilingual text lives in 'en' / 'es'. The hero photo and about photo are set in photos.json.",
   "name": "Matías A. Armella",
-  "eyebrow": { "en": "Researcher · Vertebrate Paleontologist · NW Argentina",
-               "es": "Investigador · Paleontólogo de Vertebrados · NOA" },
+  "eyebrow": {
+    "en": "Researcher · Vertebrate Paleontologist · NW Argentina",
+    "es": "Investigador · Paleontólogo de Vertebrados · NOA"
+  },
   "heroTitleHtml": "Matías <em>A.</em><br>Armella",
-  "subtitle": { "en": "PhD in Biological Sciences<br>Adjunct Researcher, CONICET",
-                "es": "Doctor en Ciencias Biológicas<br>Investigador Adjunto, CONICET" },
+  "subtitle": {
+    "en": "PhD in Biological Sciences<br>Adjunct Researcher, CONICET",
+    "es": "Doctor en Ciencias Biológicas<br>Investigador Adjunto, CONICET"
+  },
   "heroDesc": {
     "en": "I study the evolution of South American native ungulates through the fossil record, particularly from northwestern Argentina, integrating systematics, biostratigraphy, phylogeny, and paleobiology to reconstruct the history of life during the Cenozoic.",
     "es": "Estudio la evolución de los ungulados nativos sudamericanos a través del registro fósil, en particular del noroeste argentino, integrando sistemática, bioestratigrafía, filogenia y paleobiología para reconstruir la historia de la vida durante el Cenozoico."
   },
   "homePhrase": {
-    "en": "Science is a collective endeavour. This site is an invitation to get to know who I am, what I do and what my projects are. I hope to share ideas, progress, workflows and datasets. Papers are only a part of it. If you\u2019re interested in working or collaborating on any of these topics (or if you like fossils, padel, photography, or you\u2019re a fan of the \u2018Lobo Jujeño\u2019) we\u2019ll surely have a lot in common. Don\u2019t hesitate to write to me.",
-    "es": "La ciencia se hace entre muchos. Este sitio es una invitaci\u00f3n a conocer qui\u00e9n soy, a qu\u00e9 me dedico y cu\u00e1les son mis proyectos. Espero poder compartirles ideas, avances, workflows y bases de datos. Los papers son solo una parte. Si te interesa trabajar o colaborar en alguna de estas tem\u00e1ticas (o si te gustan los f\u00f3siles, el p\u00e1del, la fotograf\u00eda, o sos hincha del \u2018Lobo Jujeño\u2019) seguramente tengamos mucho en com\u00fan. No dudes en escribirme."
+    "en": "Science is a collective endeavour. This site is an invitation to get to know who I am, what I do and what my projects are. I hope to share ideas, progress, workflows and datasets. Papers are only a part of it. If you're interested in working or collaborating on any of these topics (or if you like fossils, padel, photography, or you're a fan of the 'Lobo Jujeño') we'll surely have a lot in common. Don't hesitate to write to me.",
+    "es": "La ciencia se hace entre muchos. Este sitio es una invitación a conocer quién soy, a qué me dedico y cuáles son mis proyectos. Espero poder compartirles ideas, avances, workflows y bases de datos. Los papers son solo una parte. Si te interesa trabajar o colaborar en alguna de estas temáticas (o si te gustan los fósiles, el pádel, la fotografía, o sos hincha del 'Lobo Jujeño') seguramente tengamos mucho en común. No dudes en escribirme."
   },
   "stats": [
-    { "n": "25+", "label": { "en": "Peer-reviewed<br>articles", "es": "Artículos<br>con referato" } },
-    { "n": "15+", "label": { "en": "Research<br>projects", "es": "Proyectos de<br>investigación" } },
-    { "n": "2019", "label": { "en": "PhD in<br>Biology", "es": "Doctorado en<br>Biología" } }
+    {
+      "n": "25+",
+      "label": {
+        "en": "Peer-reviewed<br>articles",
+        "es": "Artículos<br>con referato"
+      }
+    },
+    {
+      "n": "15+",
+      "label": {
+        "en": "Research<br>projects",
+        "es": "Proyectos de<br>investigación"
+      }
+    },
+    {
+      "n": "2019",
+      "label": {
+        "en": "PhD in<br>Biology",
+        "es": "Doctorado en<br>Biología"
+      }
+    }
   ],
   "about": {
-    "heading": { "en": "Paleontologist from<br><em>northwestern Argentina</em>",
-                 "es": "Paleontólogo del<br><em>noroeste argentino</em>" },
+    "heading": {
+      "en": "Paleontologist from<br><em>northwestern Argentina</em>",
+      "es": "Paleontólogo del<br><em>noroeste argentino</em>"
+    },
     "paragraphs": [
-      { "lead": true,
+      {
+        "lead": true,
         "en": "Born in S.S. de Jujuy in 1990, I studied at the Universidad Nacional de Tucumán, earning my BSc in Biological Sciences (2014) and my PhD (2019).",
-        "es": "Nací en S.S. de Jujuy en 1990 y estudié en la Universidad Nacional de Tucumán, donde me recibí de Licenciado en Ciencias Biológicas (2014) y Doctor (2019)." },
-      { "en": "My work focuses on fossil mammals of northwestern Argentina, especially South American native ungulates (Notoungulata, Litopterna) — an extinct group with no close living relatives that inhabited South America for almost 60 million years.",
-        "es": "Mi trabajo se centra en los mamíferos fósiles del noroeste argentino, especialmente los ungulados nativos sudamericanos (Notoungulata, Litopterna), un grupo extinto sin parientes vivos cercanos que habitó Sudamérica durante casi 60 millones de años." },
-      { "en": "I combine regular fieldwork, specimen preparation, geometric morphometrics, phylogenetic analyses, CT scanning, and dental microwear analysis to reconstruct how these extinct species lived, what they ate, and how they evolved.",
-        "es": "Combino campañas de campo regulares, preparación de material, morfometría geométrica, análisis filogenéticos, tomografías y análisis de microdesgaste dental para reconstruir cómo vivían estas especies extintas, qué comían y cómo evolucionaron." },
-      { "en": "When I'm not digging up bones, scoring characters, or staring at teeth under a stereoscope, I love playing padel and following <a href=\"https://www.instagram.com/oficialgyejujuy/\" target=\"_blank\" rel=\"noopener\">Gimnasia y Esgrima de Jujuy</a> — el 'Lobo jujeño' — through every result, good or painful (🎵 <em>en la tacita de plata hay una banda...</em>).",
-        "es": "Cuando no estoy desenterrando huesos, codificando caracteres o mirando dientes bajo el estereoscopio, me encanta jugar al pádel y seguir a <a href=\"https://www.instagram.com/oficialgyejujuy/\" target=\"_blank\" rel=\"noopener\">Gimnasia y Esgrima de Jujuy</a> — el 'Lobo jujeño' — en cada resultado, bueno o doloroso (🎵 <em>en la tacita de plata hay una banda...</em>)." },
-      { "en": "I'm also slowly working my way through a photography degree I keep promising myself I'll finish soon, and cooking whenever I can justify opening a cold beer, a wine, or a whisky.",
-        "es": "También avanzo de a poco con una tecnicatura en fotografía que siempre prometo terminar pronto, y cocino cada vez que puedo justificar abrir una cerveza fría, un vino o un whisky." }
+        "es": "Nací en S.S. de Jujuy en 1990 y estudié en la Universidad Nacional de Tucumán, donde me recibí de Licenciado en Ciencias Biológicas (2014) y Doctor (2019)."
+      },
+      {
+        "en": "My work focuses on fossil mammals of northwestern Argentina, especially South American native ungulates (Notoungulata, Litopterna) — an extinct group with no close living relatives that inhabited South America for almost 60 million years.",
+        "es": "Mi trabajo se centra en los mamíferos fósiles del noroeste argentino, especialmente los ungulados nativos sudamericanos (Notoungulata, Litopterna), un grupo extinto sin parientes vivos cercanos que habitó Sudamérica durante casi 60 millones de años."
+      },
+      {
+        "en": "I combine regular fieldwork, specimen preparation, geometric morphometrics, phylogenetic analyses, CT scanning, and dental microwear analysis to reconstruct how these extinct species lived, what they ate, and how they evolved.",
+        "es": "Combino campañas de campo regulares, preparación de material, morfometría geométrica, análisis filogenéticos, tomografías y análisis de microdesgaste dental para reconstruir cómo vivían estas especies extintas, qué comían y cómo evolucionaron."
+      },
+      {
+        "en": "When I'm not digging up bones, scoring characters, or staring at teeth under a stereoscope, I love playing padel and following <a href=\"https://www.instagram.com/oficialgyejujuy/\" target=\"_blank\" rel=\"noopener\">Gimnasia y Esgrima de Jujuy</a> — el 'Lobo jujeño' — through every result, good or painful (🎵 <em>en la tacita de plata hay una banda...</em>).",
+        "es": "Cuando no estoy desenterrando huesos, codificando caracteres o mirando dientes bajo el estereoscopio, me encanta jugar al pádel y seguir a <a href=\"https://www.instagram.com/oficialgyejujuy/\" target=\"_blank\" rel=\"noopener\">Gimnasia y Esgrima de Jujuy</a> — el 'Lobo jujeño' — en cada resultado, bueno o doloroso (🎵 <em>en la tacita de plata hay una banda...</em>)."
+      },
+      {
+        "en": "I'm also slowly working my way through a photography degree I keep promising myself I'll finish soon, and cooking whenever I can justify opening a cold beer, a wine, or a whisky.",
+        "es": "También avanzo de a poco con una tecnicatura en fotografía que siempre prometo terminar pronto, y cocino cada vez que puedo justificar abrir una cerveza fría, un vino o un whisky."
+      }
     ]
   },
   "positions": [
-    { "main": { "en": "Adjunct Researcher (Investigador Adjunto)", "es": "Investigador Adjunto" },
-      "inst": { "en": "CONICET", "es": "CONICET" },
-      "url": "https://bicyt.conicet.gov.ar/fichas/p/matias-alberto-armella" },
-    { "main": { "en": "Associate Professor — Paleontology (Regular)", "es": "Profesor Adjunto Regular — Paleontología" },
-      "inst": { "en": "Facultad de Ciencias Exactas y Naturales, UNCa", "es": "Facultad de Ciencias Exactas y Naturales, UNCa" } },
-    { "main": { "en": "Teaching Assistant — Paleontology (Regular)", "es": "Auxiliar Docente Regular — Paleontología" },
-      "inst": { "en": "Facultad de Ciencias Naturales e IML, UNT", "es": "Facultad de Ciencias Naturales e IML, UNT" } },
-    { "main": { "en": "Ad Honorem Associate Collaborator — Paleontology", "es": "Colaborador Adjunto Ad Honorem — Paleontología" },
-      "inst": { "en": "Ministerio de Cultura, Turismo y Deporte, Catamarca", "es": "Ministerio de Cultura, Turismo y Deporte, Catamarca" } }
+    {
+      "main": {
+        "en": "Adjunct Researcher (Investigador Adjunto)",
+        "es": "Investigador Adjunto"
+      },
+      "inst": {
+        "en": "CONICET",
+        "es": "CONICET"
+      },
+      "url": "https://bicyt.conicet.gov.ar/fichas/p/matias-alberto-armella"
+    },
+    {
+      "main": {
+        "en": "Associate Professor — Paleontology (Regular)",
+        "es": "Profesor Adjunto Regular — Paleontología"
+      },
+      "inst": {
+        "en": "Facultad de Ciencias Exactas y Naturales, UNCa",
+        "es": "Facultad de Ciencias Exactas y Naturales, UNCa"
+      }
+    },
+    {
+      "main": {
+        "en": "Teaching Assistant — Paleontology (Regular)",
+        "es": "Auxiliar Docente Regular — Paleontología"
+      },
+      "inst": {
+        "en": "Facultad de Ciencias Naturales e IML, UNT",
+        "es": "Facultad de Ciencias Naturales e IML, UNT"
+      }
+    },
+    {
+      "main": {
+        "en": "Ad Honorem Associate Collaborator — Paleontology",
+        "es": "Colaborador Adjunto Ad Honorem — Paleontología"
+      },
+      "inst": {
+        "en": "Ministerio de Cultura, Turismo y Deporte, Catamarca",
+        "es": "Ministerio de Cultura, Turismo y Deporte, Catamarca"
+      }
+    }
   ],
   "interests": [
-    { "en": "Notoungulata", "es": "Notoungulata" },
-    { "en": "Litopterna", "es": "Litopterna" },
-    { "en": "Systematics", "es": "Sistemática" },
-    { "en": "Phylogeny", "es": "Filogenia" },
-    { "en": "Biostratigraphy", "es": "Bioestratigrafía" },
-    { "en": "Paleobiology", "es": "Paleobiología" },
-    { "en": "Paleoecology", "es": "Paleoecología" },
-    { "en": "Dental microwear", "es": "Microdesgaste dental" },
-    { "en": "Geometric morphometrics", "es": "Morfometría geométrica" },
-    { "en": "Paleontological heritage", "es": "Patrimonio paleontológico" }
+    {
+      "en": "Notoungulata",
+      "es": "Notoungulata"
+    },
+    {
+      "en": "Litopterna",
+      "es": "Litopterna"
+    },
+    {
+      "en": "Systematics",
+      "es": "Sistemática"
+    },
+    {
+      "en": "Phylogeny",
+      "es": "Filogenia"
+    },
+    {
+      "en": "Biostratigraphy",
+      "es": "Bioestratigrafía"
+    },
+    {
+      "en": "Paleobiology",
+      "es": "Paleobiología"
+    },
+    {
+      "en": "Paleoecology",
+      "es": "Paleoecología"
+    },
+    {
+      "en": "Dental microwear",
+      "es": "Microdesgaste dental"
+    },
+    {
+      "en": "Geometric morphometrics",
+      "es": "Morfometría geométrica"
+    },
+    {
+      "en": "Paleontological heritage",
+      "es": "Patrimonio paleontológico"
+    }
   ],
   "contact": {
-    "quote": { "en": "\"Congratulations, it takes talent to come up with such a fallible plan.\"",
-               "es": "\"Felicitaciones, hay que tener talento para idear un plan tan falible.\"" },
+    "quote": {
+      "en": "\"Congratulations, it takes talent to come up with such a fallible plan.\"",
+      "es": "\"Felicitaciones, hay que tener talento para idear un plan tan falible.\""
+    },
     "quoteAuthor": "— Santos",
-    "emails": ["matiasarmella@csnat.unt.edu.ar", "m.armella@conicet.gov.ar", "matiasarmella@yahoo.com.ar"],
-    "institution": { "en": "CONICET — INSUGEO<br>San Miguel de Tucumán, Argentina",
-                     "es": "CONICET — INSUGEO<br>San Miguel de Tucumán, Argentina" },
-    "location": { "en": "S.M. de Tucumán, Tucumán · Argentina",
-                  "es": "S.M. de Tucumán, Tucumán · Argentina" },
+    "emails": [
+      "matiasarmella@yahoo.com.ar",
+      "m.armella@conicet.gov.ar",
+      "marmella@exactas.unca.edu.ar",
+      "matiasarmella@csnat.unt.edu.ar",
+      "matias.armella@case.edu"
+    ],
+    "institution": {
+      "en": "CONICET — INSUGEO<br>San Miguel de Tucumán, Argentina",
+      "es": "CONICET — INSUGEO<br>San Miguel de Tucumán, Argentina"
+    },
+    "location": {
+      "en": "S.M. de Tucumán, Tucumán · Argentina",
+      "es": "S.M. de Tucumán, Tucumán · Argentina"
+    },
     "academic": [
-      { "label": "CONICET", "url": "https://bicyt.conicet.gov.ar/fichas/p/matias-alberto-armella" },
-      { "label": "ResearchGate", "url": "https://www.researchgate.net/profile/Matias-Armella" },
-      { "label": "ORCID", "url": "https://orcid.org/0000-0001-8870-3891" },
-      { "label": "GitHub", "url": "https://github.com/matiarmella" },
-      { "label": "X", "url": "https://x.com/mati_armella" }
+      {
+        "label": "CONICET",
+        "url": "https://bicyt.conicet.gov.ar/fichas/p/matias-alberto-armella"
+      },
+      {
+        "label": "ResearchGate",
+        "url": "https://www.researchgate.net/profile/Matias-Armella"
+      },
+      {
+        "label": "ORCID",
+        "url": "https://orcid.org/0000-0001-8870-3891"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/matiarmella"
+      },
+      {
+        "label": "X",
+        "url": "https://x.com/mati_armella"
+      }
     ]
   }
 }

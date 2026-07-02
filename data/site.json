@@ -3,7 +3,13 @@
   "config": {
     "defaultLang": "en",
     "defaultTab": "home",
-    "counter": { "enabled": true, "provider": "counterapi", "namespace": "matiarmella-web", "key": "visits", "startAt": 100 },
+    "counter": {
+      "enabled": true,
+      "provider": "counterapi",
+      "namespace": "matiarmella-web",
+      "key": "visits",
+      "startAt": 100
+    },
     "cvEnabled": false,
     "links": {
       "email": "matiasarmella@csnat.unt.edu.ar",
@@ -17,60 +23,242 @@
   },
   "ui": {
     "nav": {
-      "home":    { "en": "Home",              "es": "Inicio" },
-      "about":   { "en": "About me",          "es": "Sobre mí" },
-      "dedico":  { "en": "What I do",          "es": "A qué me dedico" },
-      "projects":{ "en": "Projects",          "es": "Proyectos" },
-      "outreach":{ "en": "Outreach",          "es": "Divulgación" },
-      "contrib": { "en": "Some contributions","es": "Algunas contribuciones" },
-      "datos":   { "en": "Data & resources",  "es": "Datos y recursos" },
-      "contact": { "en": "Contact",           "es": "Contacto" }
+      "home": {
+        "en": "Home",
+        "es": "Inicio"
+      },
+      "about": {
+        "en": "About me",
+        "es": "Sobre mí"
+      },
+      "dedico": {
+        "en": "What I do",
+        "es": "A qué me dedico"
+      },
+      "projects": {
+        "en": "Projects",
+        "es": "Proyectos"
+      },
+      "outreach": {
+        "en": "Outreach",
+        "es": "Divulgación"
+      },
+      "contrib": {
+        "en": "Some contributions",
+        "es": "Algunas contribuciones"
+      },
+      "datos": {
+        "en": "Data & resources",
+        "es": "Datos y recursos"
+      },
+      "contact": {
+        "en": "Contact",
+        "es": "Contacto"
+      },
+      "novedades": {
+        "en": "News",
+        "es": "Novedades"
+      }
     },
     "buttons": {
-      "viewContributions": { "en": "See my contributions", "es": "Ver mis contribuciones" },
-      "getInTouch":        { "en": "Get in touch",         "es": "Escribime" },
-      "downloadCV":        { "en": "CV (coming soon)",     "es": "CV (próximamente)" },
-      "readArticle":       { "en": "Read article",         "es": "Leer nota" },
-      "watch":             { "en": "Watch",                "es": "Ver" },
-      "readPaper":         { "en": "Read the paper →",     "es": "Ir al paper →" },
-      "all":               { "en": "All",                  "es": "Todas" },
-      "earlier":           { "en": "Earlier",              "es": "Anteriores" }
+      "viewContributions": {
+        "en": "See my contributions",
+        "es": "Ver mis contribuciones"
+      },
+      "getInTouch": {
+        "en": "Get in touch",
+        "es": "Escribime"
+      },
+      "downloadCV": {
+        "en": "CV (coming soon)",
+        "es": "CV (próximamente)"
+      },
+      "readArticle": {
+        "en": "Read article",
+        "es": "Leer nota"
+      },
+      "watch": {
+        "en": "Watch",
+        "es": "Ver"
+      },
+      "readPaper": {
+        "en": "Read the paper →",
+        "es": "Ir al paper →"
+      },
+      "all": {
+        "en": "All",
+        "es": "Todas"
+      },
+      "earlier": {
+        "en": "Earlier",
+        "es": "Anteriores"
+      },
+      "news": {
+        "en": "News",
+        "es": "Novedades"
+      }
     },
     "labels": {
-      "visits":             { "en": "site visits",               "es": "visitas" },
-      "researchInterests":  { "en": "Research interests",        "es": "Líneas de investigación" },
-      "currentTeaching":    { "en": "Current teaching",          "es": "Docencia actual" },
-      "studentSupervision": { "en": "Student supervision",       "es": "Dirección de estudiantes" },
-      "researchAreas":      { "en": "Areas of work",             "es": "Áreas de trabajo" },
-      "fieldworkGroup":     { "en": "In the field",              "es": "En el campo" },
-      "labGroup":           { "en": "Lab & preparation",         "es": "Laboratorio y gabinete" },
-      "collections":        { "en": "Museums & collections",     "es": "Museos y colecciones" },
-      "mediaGroup":         { "en": "In the media",              "es": "En los medios" },
-      "fullList":           { "en": "Full publication list (academic format)", "es": "Lista completa de publicaciones (formato académico)" },
-      "personalGroup":      { "en": "Beyond the lab",            "es": "Más allá del laboratorio" },
-      "underConstruction":  { "en": "Under construction",        "es": "En construcción" },
-      "underConstructionSub":{ "en": "This section is coming soon.", "es": "Esta sección estará disponible pronto." }
+      "visits": {
+        "en": "site visits",
+        "es": "visitas"
+      },
+      "researchInterests": {
+        "en": "Research interests",
+        "es": "Líneas de investigación"
+      },
+      "currentTeaching": {
+        "en": "Current teaching",
+        "es": "Docencia actual"
+      },
+      "studentSupervision": {
+        "en": "Student supervision",
+        "es": "Dirección de estudiantes"
+      },
+      "researchAreas": {
+        "en": "Areas of work",
+        "es": "Áreas de trabajo"
+      },
+      "fieldworkGroup": {
+        "en": "In the field",
+        "es": "En el campo"
+      },
+      "labGroup": {
+        "en": "Lab & preparation",
+        "es": "Laboratorio y gabinete"
+      },
+      "collections": {
+        "en": "Museums & collections",
+        "es": "Museos y colecciones"
+      },
+      "mediaGroup": {
+        "en": "In the media",
+        "es": "En los medios"
+      },
+      "fullList": {
+        "en": "Full publication list (academic format)",
+        "es": "Lista completa de publicaciones (formato académico)"
+      },
+      "personalGroup": {
+        "en": "Beyond the lab",
+        "es": "Más allá del laboratorio"
+      },
+      "underConstruction": {
+        "en": "Under construction",
+        "es": "En construcción"
+      },
+      "underConstructionSub": {
+        "en": "This section is coming soon.",
+        "es": "Esta sección estará disponible pronto."
+      }
     },
     "sections": {
-      "field":   { "label": { "en": "From the field", "es": "Desde el campo" },
-                   "subtitle": { "en": "Fieldwork and travels across the Andes and the Puna of northwestern Argentina.", "es": "Trabajo de campo y viajes por los Andes y la Puna del noroeste argentino." } },
-      "about":   { "label": { "en": "About me", "es": "Sobre mí" } },
-      "dedico":  { "label": { "en": "What I do", "es": "A qué me dedico" },
-                   "title": { "en": "What I do", "es": "A qué me dedico" },
-                   "subtitle": { "en": "From prospecting fossil sites in the field to preparing, scanning and analysing specimens in the lab.", "es": "Desde la prospección de sitios fosilíferos en el campo hasta la preparación, el escaneo y el análisis de los ejemplares en el laboratorio." } },
-      "projects":{ "label": { "en": "Projects", "es": "Proyectos" },
-                   "title": { "en": "Active research projects", "es": "Proyectos de investigación vigentes" } },
-      "outreach":{ "label": { "en": "Outreach", "es": "Divulgación" },
-                   "title": { "en": "Outreach & teaching", "es": "Divulgación y docencia" },
-                   "subtitle": { "en": "Sharing science beyond the papers: media, teaching, mentoring and community.", "es": "Compartir ciencia más allá de los papers: medios, docencia, formación y comunidad." } },
-      "contrib": { "label": { "en": "Some contributions", "es": "Algunas contribuciones" },
-                   "title": { "en": "Some questions I've explored", "es": "Algunas preguntas que abordé" },
-                   "subtitle": { "en": "Each of my papers, told as the question behind it. Click any one to reach the original article.", "es": "Cada uno de mis trabajos, contado como la pregunta que lo motivó. Hacé clic en cualquiera para llegar al artículo original." } },
-      "datos":   { "label": { "en": "Data & resources", "es": "Datos y recursos" },
-                   "title": { "en": "Data & resources", "es": "Datos y recursos" },
-                   "subtitle": { "en": "This is where I'll share datasets, code, protocols and other resources from my research.", "es": "Acá voy a compartir bases de datos, código, protocolos y otros recursos de mis investigaciones." } },
-      "contact": { "label": { "en": "Contact", "es": "Contacto" },
-                   "title": { "en": "Let's talk", "es": "Hablemos" } }
+      "field": {
+        "label": {
+          "en": "From the field",
+          "es": "Desde el campo"
+        },
+        "subtitle": {
+          "en": "Fieldwork and travels across the Andes and the Puna of northwestern Argentina.",
+          "es": "Trabajo de campo y viajes por los Andes y la Puna del noroeste argentino."
+        }
+      },
+      "about": {
+        "label": {
+          "en": "About me",
+          "es": "Sobre mí"
+        }
+      },
+      "dedico": {
+        "label": {
+          "en": "What I do",
+          "es": "A qué me dedico"
+        },
+        "title": {
+          "en": "What I do",
+          "es": "A qué me dedico"
+        },
+        "subtitle": {
+          "en": "From prospecting fossil sites in the field to preparing, scanning and analysing specimens in the lab.",
+          "es": "Desde la prospección de sitios fosilíferos en el campo hasta la preparación, el escaneo y el análisis de los ejemplares en el laboratorio."
+        }
+      },
+      "projects": {
+        "label": {
+          "en": "Projects",
+          "es": "Proyectos"
+        },
+        "title": {
+          "en": "Active research projects",
+          "es": "Proyectos de investigación vigentes"
+        }
+      },
+      "outreach": {
+        "label": {
+          "en": "Outreach",
+          "es": "Divulgación"
+        },
+        "title": {
+          "en": "Outreach & teaching",
+          "es": "Divulgación y docencia"
+        },
+        "subtitle": {
+          "en": "Sharing science beyond the papers: media, teaching, mentoring and community.",
+          "es": "Compartir ciencia más allá de los papers: medios, docencia, formación y comunidad."
+        }
+      },
+      "contrib": {
+        "label": {
+          "en": "Some contributions",
+          "es": "Algunas contribuciones"
+        },
+        "title": {
+          "en": "Some questions I've explored",
+          "es": "Algunas preguntas que abordé"
+        },
+        "subtitle": {
+          "en": "Each of my papers, told as the question behind it. Click any one to reach the original article.",
+          "es": "Cada uno de mis trabajos, contado como la pregunta que lo motivó. Hacé clic en cualquiera para llegar al artículo original."
+        }
+      },
+      "datos": {
+        "label": {
+          "en": "Data & resources",
+          "es": "Datos y recursos"
+        },
+        "title": {
+          "en": "Data & resources",
+          "es": "Datos y recursos"
+        },
+        "subtitle": {
+          "en": "This is where I'll share datasets, code, protocols and other resources from my research.",
+          "es": "Acá voy a compartir bases de datos, código, protocolos y otros recursos de mis investigaciones."
+        }
+      },
+      "contact": {
+        "label": {
+          "en": "Contact",
+          "es": "Contacto"
+        },
+        "title": {
+          "en": "Let's talk",
+          "es": "Hablemos"
+        }
+      },
+      "novedades": {
+        "label": {
+          "en": "News",
+          "es": "Novedades"
+        },
+        "title": {
+          "en": "News & updates",
+          "es": "Novedades"
+        },
+        "subtitle": {
+          "en": "Recent talks, publications, fieldwork and other updates.",
+          "es": "Charlas, publicaciones, campañas y otras novedades recientes."
+        }
+      }
     }
   }
 }

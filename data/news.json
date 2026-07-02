@@ -1,0 +1,4 @@
+{
+  "_comment": "Novedades / News. Add items newest-first. Each: date (string), title {en,es}, body {en,es}, optional link {url,label{en,es}}.",
+  "items": []
+}

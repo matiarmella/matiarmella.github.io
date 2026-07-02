@@ -55,41 +55,48 @@
 
   <!-- ABOUT -->
   <section class="view" id="about">
-    <div class="section-inner">
-      <div class="section-label" data-label="about"></div>
-      <div class="about-grid">
-        <div class="about-text">
-          <h2 id="about-heading"></h2>
-          <div id="about-paragraphs"></div>
-          <ul class="positions-list" id="about-positions"></ul>
-        </div>
-        <div class="about-right">
-          <div class="about-photo" id="about-photo"></div>
-          <div>
-            <p class="tags-label" data-label="researchInterests"></p>
-            <div class="interests-grid" id="about-interests"></div>
+    <div class="rails">
+      <aside class="rail" id="about-imgs-left"></aside>
+      <div class="rails-center">
+        <div class="section-label" data-label="about"></div>
+        <div class="about-grid">
+          <div class="about-text">
+            <h2 id="about-heading"></h2>
+            <div id="about-paragraphs"></div>
+            <ul class="positions-list" id="about-positions"></ul>
+          </div>
+          <div class="about-right">
+            <div class="about-photo" id="about-photo"></div>
+            <div>
+              <p class="tags-label" data-label="researchInterests"></p>
+              <div class="interests-grid" id="about-interests"></div>
+            </div>
           </div>
         </div>
       </div>
-      <p class="tags-label group-label" data-label="personalGroup"></p>
-      <div class="photo-grid" id="personal-grid"></div>
+      <aside class="rail" id="about-imgs-right"></aside>
     </div>
+    <div class="rails-below" id="about-imgs-below"></div>
   </section>
 
   <!-- WHAT I DO -->
   <section class="view" id="dedico">
-    <div class="section-inner">
-      <div class="section-label" data-label="dedico"></div>
-      <h2 data-title="dedico"></h2>
-      <p class="field-sub" data-subtitle="dedico"></p>
-      <p class="tags-label group-label" data-label="researchAreas"></p>
-      <div class="research-grid" id="research-grid"></div>
-      <p class="tags-label group-label" data-label="fieldworkGroup"></p>
-      <div class="photo-grid" id="fieldwork-grid"></div>
-      <p class="tags-label group-label" data-label="labGroup"></p>
-      <div class="photo-grid" id="lab-grid"></div>
-      <p class="tags-label group-label" data-label="collections"></p>
-      <div class="photo-grid" id="collections-grid"></div>
+    <div class="rails rails-2">
+      <div class="rails-center">
+        <div class="section-label" data-label="dedico"></div>
+        <h2 data-title="dedico"></h2>
+        <p class="field-sub" data-subtitle="dedico"></p>
+        <p class="tags-label group-label" data-label="researchAreas"></p>
+        <div class="research-grid" id="research-grid"></div>
+      </div>
+      <div class="rails-photos" id="dedico-photos">
+        <p class="tags-label group-label first" data-label="fieldworkGroup"></p>
+        <div class="photo-grid two" id="fieldwork-grid"></div>
+        <p class="tags-label group-label" data-label="labGroup"></p>
+        <div class="photo-grid two" id="lab-grid"></div>
+        <p class="tags-label group-label" data-label="collections"></p>
+        <div class="photo-grid two" id="collections-grid"></div>
+      </div>
     </div>
   </section>
 
@@ -104,18 +111,22 @@
 
   <!-- OUTREACH -->
   <section class="view" id="outreach">
-    <div class="section-inner">
-      <div class="section-label" data-label="outreach"></div>
-      <h2 data-title="outreach"></h2>
-      <p class="field-sub" data-subtitle="outreach"></p>
-      <p class="tags-label group-label" data-label="mediaGroup"></p>
-      <div class="media-grid" id="media-grid"></div>
-      <div class="teaching-grid">
-        <div class="teaching-block"><h3 data-label="currentTeaching"></h3><div id="teaching-positions"></div></div>
-        <div class="teaching-block"><h3 data-label="studentSupervision"></h3><div id="teaching-supervision"></div></div>
+    <div class="rails">
+      <aside class="rail" id="outreach-imgs-left"></aside>
+      <div class="rails-center">
+        <div class="section-label" data-label="outreach"></div>
+        <h2 data-title="outreach"></h2>
+        <p class="field-sub" data-subtitle="outreach"></p>
+        <p class="tags-label group-label" data-label="mediaGroup"></p>
+        <div class="media-grid" id="media-grid"></div>
+        <div class="teaching-grid">
+          <div class="teaching-block"><h3 data-label="currentTeaching"></h3><div id="teaching-positions"></div></div>
+          <div class="teaching-block"><h3 data-label="studentSupervision"></h3><div id="teaching-supervision"></div></div>
+        </div>
       </div>
-      <div class="photo-grid" id="outreach-grid"></div>
+      <aside class="rail" id="outreach-imgs-right"></aside>
     </div>
+    <div class="rails-below" id="outreach-imgs-below"></div>
   </section>
 
   <!-- SOME CONTRIBUTIONS -->
@@ -147,6 +158,15 @@
   </section>
 
   <!-- CONTACT -->
+  <section class="view" id="novedades">
+    <div class="section-inner">
+      <div class="section-label" data-label="novedades"></div>
+      <h2 data-title="novedades"></h2>
+      <p class="field-sub" data-subtitle="novedades"></p>
+      <div class="news-list" id="news-list"></div>
+    </div>
+  </section>
+
   <section class="view" id="contact">
     <div class="section-inner">
       <div class="section-label" data-label="contact"></div>

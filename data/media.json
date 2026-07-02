@@ -2,49 +2,81 @@
   "_comment": "Press, outreach and interviews. type: 'article' or 'video' (changes the link label).",
   "items": [
     {
+      "outlet": "PNAS — Journal Club",
+      "headline": {
+        "en": "Tooth structure isn't always a good indicator of diet in ancient animals",
+        "es": "La estructura dental no siempre es un buen indicador de la dieta en animales antiguos"
+      },
+      "year": "2026",
+      "type": "article",
+      "url": "https://www.pnas.org/post/journal-club/tooth-structure-isn-t-always-good-indicator-diet-ancient-animals"
+    },
+    {
+      "outlet": "CCC",
+      "headline": {
+        "en": "Fossil remains of a glyptodont found in Alderetes",
+        "es": "Hallaron restos fósiles de un gliptodonte en Alderetes"
+      },
+      "year": "2026",
+      "type": "video",
+      "url": "https://www.youtube.com/watch?v=WkX0lesf2Mc"
+    },
+    {
       "outlet": "CONICET NOA Sur",
-      "headline": { "en": "New research in NW Argentina challenges classic interpretations about the diet of South American native mammals",
-                    "es": "Nuevos estudios en el NOA cuestionan interpretaciones clásicas sobre la dieta de mamíferos nativos de América del Sur" },
+      "headline": {
+        "en": "New research in NW Argentina challenges classic interpretations about the diet of South American native mammals",
+        "es": "Nuevos estudios en el NOA cuestionan interpretaciones clásicas sobre la dieta de mamíferos nativos de América del Sur"
+      },
       "year": "2026",
       "type": "article",
       "url": "https://noasur.conicet.gov.ar/nuevos-estudios-en-el-noa-cuestionan-interpretaciones-clasicas-sobre-la-dieta-de-mamiferos-nativos-de-america-del-sur/"
     },
     {
       "outlet": "El Tucumano",
-      "headline": { "en": "Fossil discovery and glyptodont remains confirmed in Tucumán",
-                    "es": "Hallazgo y restos de gliptodonte confirmados en Tucumán" },
+      "headline": {
+        "en": "Fossil discovery and glyptodont remains confirmed in Tucumán",
+        "es": "Hallazgo y restos de gliptodonte confirmados en Tucumán"
+      },
       "year": "2026",
       "type": "article",
       "url": "https://www.eltucumano.com/noticia/libre/316644/hallazgo-y-conmocion-total-la-imagen-publicada-y-confirmada-hace-instantes-por-el-gobierno-de-tucuman"
     },
     {
       "outlet": "Infobae — Ciencia",
-      "headline": { "en": "Who was Ichhutherium wayra, the new fossil mammal found in Argentina at over 3,900 metres above sea level?",
-                    "es": "¿Quién era Ichhutherium wayra, el nuevo mamífero fósil hallado en Argentina a más de 3.900 metros de altura?" },
+      "headline": {
+        "en": "Who was Ichhutherium wayra, the new fossil mammal found in Argentina at over 3,900 metres above sea level?",
+        "es": "¿Quién era Ichhutherium wayra, el nuevo mamífero fósil hallado en Argentina a más de 3.900 metros de altura?"
+      },
       "year": "2025",
       "type": "article",
       "url": "https://www.infobae.com/america/ciencia-america/2025/04/01/quien-era-ichhutherium-wayra-el-nuevo-de-mamifero-fosil-hallado-en-argentina-a-mas-de-3900-metros-de-altura/"
     },
     {
       "outlet": "CONICET NOA Sur",
-      "headline": { "en": "Researchers discover an unprecedented species of prehistoric mammal in the Puna of Catamarca",
-                    "es": "Descubren en la Puna de Catamarca una especie inédita de mamífero prehistórico" },
+      "headline": {
+        "en": "Researchers discover an unprecedented species of prehistoric mammal in the Puna of Catamarca",
+        "es": "Descubren en la Puna de Catamarca una especie inédita de mamífero prehistórico"
+      },
       "year": "2025",
       "type": "article",
       "url": "https://noasur.conicet.gov.ar/descubren-en-la-puna-de-catamarca-una-especie-inedita-de-mamifero-prehistorico/"
     },
     {
       "outlet": "La Gaceta — Sociedad",
-      "headline": { "en": "A new species discovered in the Puna of Catamarca that lived 18 million years ago",
-                    "es": "Descubren en la Puna catamarqueña una nueva especie que vivió hace 18 millones de años" },
+      "headline": {
+        "en": "A new species discovered in the Puna of Catamarca that lived 18 million years ago",
+        "es": "Descubren en la Puna catamarqueña una nueva especie que vivió hace 18 millones de años"
+      },
       "year": "2025",
       "type": "article",
       "url": "https://www.lagaceta.com.ar/nota/1079854/sociedad/descubren-puna-catamarquena-nueva-especie-vivio-hace-18-millones-anos.html"
     },
     {
       "outlet": "Canal 7 Jujuy — Entrevista",
-      "headline": { "en": "Interview on new paleontological discoveries in northwestern Argentina",
-                    "es": "Entrevista sobre nuevos descubrimientos paleontológicos en el noroeste argentino" },
+      "headline": {
+        "en": "Interview on new paleontological discoveries in northwestern Argentina",
+        "es": "Entrevista sobre nuevos descubrimientos paleontológicos en el noroeste argentino"
+      },
       "year": "2025",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=5elCkbyfLYk"

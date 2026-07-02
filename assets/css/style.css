@@ -79,7 +79,7 @@ h3{font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--cream)
 
 /* ---------- ABOUT ---------- */
 #about{background:var(--bg);border-top:1px solid var(--line);}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:4rem;align-items:start;}
 .about-text p{color:var(--text);line-height:1.9;margin-bottom:1.2rem;font-size:.93rem;}
 .about-text p.lead{font-family:var(--serif);font-size:1.12rem;color:var(--cream-dim);font-style:italic;}
 .positions-list{list-style:none;margin-top:2rem;}
@@ -107,15 +107,15 @@ h3{font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--cream)
 
 /* ---------- FIELD BAND (top of page, static, captions below) ---------- */
 #field{background:var(--bg2);border-bottom:1px solid var(--line);padding-top:4.6rem;overflow:hidden;}
-.band-head{padding:1.7rem 3rem .2rem;}
+.band-head{padding:1.3rem 3rem .2rem;}
 .band-eyebrow{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:.8rem;}
 .band-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--amber);}
 .band-sub{font-size:.86rem;color:var(--text-dim);margin-top:.55rem;}
-.band-track{display:flex;gap:1.1rem;width:max-content;padding:1.5rem 3rem 2rem;animation:bandScroll 80s linear infinite;}
+.band-track{display:flex;gap:1rem;width:max-content;padding:1.2rem 3rem 1.6rem;animation:bandScroll 80s linear infinite;}
 #field:hover .band-track{animation-play-state:paused;}
 @keyframes bandScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-.band-item{flex:0 0 auto;width:440px;cursor:pointer;}
-.band-item .ph{width:440px;height:294px;overflow:hidden;border:1px solid var(--line);}
+.band-item{flex:0 0 auto;width:360px;cursor:pointer;}
+.band-item .ph{width:360px;height:240px;overflow:hidden;border:1px solid var(--line);}
 .band-item img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) brightness(.9);transition:transform .6s var(--ease),filter .4s;}
 .band-item:hover img{transform:scale(1.05);filter:saturate(1) brightness(1);}
 .band-cap{margin-top:.55rem;font-family:var(--mono);font-size:.66rem;color:var(--text-dim);line-height:1.4;}
@@ -171,7 +171,7 @@ h3{font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--cream)
 
 /* ---------- TEACHING ---------- */
 #teaching{background:var(--bg);border-top:1px solid var(--line);}
-.teaching-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;}
+.teaching-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3.5rem;}
 .teaching-block h3{margin-bottom:1.4rem;}
 .teaching-item{padding:.85rem 0;border-bottom:1px solid var(--line);font-size:.86rem;}
 .ti-role{color:var(--cream);display:block;margin-bottom:.18rem;}
@@ -321,3 +321,50 @@ nav{padding:1.05rem 2rem;}
   .contrib-item{grid-template-columns:1fr;gap:.3rem;}
   .contrib-q{font-size:1.2rem;}
 }
+
+#field.at-bottom{border-top:1px solid var(--line);margin-top:2.5rem;padding-top:0;}
+
+/* ---- Margin rails: center stays intact, photos fill the outer margins (About, Outreach) ---- */
+.rails{display:grid;grid-template-columns:minmax(0,1fr) 280px 280px;gap:2.9rem;align-items:start;max-width:1800px;margin:0 auto;padding:6rem 2rem 1.5rem;}
+.rails-center{min-width:0;grid-column:1;grid-row:1;}
+#about-imgs-left,#outreach-imgs-left{grid-column:2;grid-row:1;}
+#about-imgs-right,#outreach-imgs-right{grid-column:3;grid-row:1;}
+.rail{display:flex;flex-direction:column;gap:1.4rem;}
+.rail .photo-card .ph{aspect-ratio:auto;}
+.rail .photo-card img{width:100%;height:auto;}
+.rails-below{display:flex;justify-content:center;flex-wrap:wrap;gap:1.8rem 1.4rem;max-width:1080px;margin:0 auto;padding:1.5rem 3rem 3rem;}
+.rails-below .photo-card{flex:0 1 300px;}
+@media(max-width:1360px){
+  .rails{display:flex;flex-direction:column;gap:2.2rem;max-width:1080px;padding:5rem 2rem 1rem;}
+  .rails-center{order:-1;}
+  .rail{flex-direction:row;flex-wrap:wrap;gap:1.2rem;}
+  .rail .photo-card{flex:0 1 calc(33.333% - .8rem);}
+  .rail .photo-card .ph{aspect-ratio:4/3;}
+}
+@media(max-width:640px){
+  .rail .photo-card{flex:0 1 calc(50% - .6rem);}
+}
+
+/* ---- What I do: text left, grouped photos (2 cols) right ---- */
+.rails.rails-2{grid-template-columns:minmax(0,1fr) 600px;}
+.rails-photos{min-width:0;}
+.rails-photos .group-label{margin-top:2.6rem;}
+.rails-photos .group-label.first{margin-top:0;}
+.rails-photos .photo-grid.two{grid-template-columns:1fr 1fr;gap:1.4rem 1.2rem;margin-top:1rem;}
+@media(max-width:1360px){
+  .rails.rails-2{grid-template-columns:1fr;}
+}
+
+
+/* ---- News / Novedades ---- */
+.news-list{margin-top:2.2rem;display:flex;flex-direction:column;gap:2rem;max-width:840px;}
+.news-item{display:grid;grid-template-columns:120px 1fr;gap:1.6rem;padding-bottom:2rem;border-bottom:1px solid var(--line);}
+.news-date{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--amber);padding-top:.35rem;}
+.news-title{font-family:var(--serif);font-size:1.35rem;font-weight:400;color:var(--cream);margin-bottom:.5rem;line-height:1.2;}
+.news-text{font-size:.9rem;color:var(--text);line-height:1.8;}
+.news-link{display:inline-block;margin-top:.7rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--amber);text-transform:uppercase;}
+@media(max-width:640px){ .news-item{grid-template-columns:1fr;gap:.4rem;} }
+
+/* arbol_2024 is a vertical/portrait photo — always show it at its original proportions (never the 4/3 grid crop) */
+.photo-card[data-full$="arbol_2024.jpg"] .ph{aspect-ratio:auto;}
+.photo-card[data-full$="arbol_2024.jpg"] img{height:auto;}

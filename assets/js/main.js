@@ -15,7 +15,8 @@ const ICON = {
 
 let DATA = {};
 let lang = 'en';
-const VIEWS = ['home','about','dedico','projects','outreach','contrib','datos','contact'];
+const VIEWS = ['home','about','dedico','projects','outreach','contrib','datos','novedades','contact'];
+const BAND_POS = { home:'top', about:'none', dedico:'none', projects:'bottom', outreach:'none', contrib:'bottom', datos:'top', novedades:'top', contact:'bottom' };
 
 const $  = (s, r=document) => r.querySelector(s);
 const $$ = (s, r=document) => [...r.querySelectorAll(s)];
@@ -24,7 +25,7 @@ const t  = v => v==null ? '' : (typeof v==='object' ? (v[lang] ?? v.en ?? '') : 
 const boldName = s => (s||'').replace(/Armella(,?\s*M\.?\s*A\.?)?/g, m => `<strong>${m}</strong>`);
 
 async function boot(){
-  const files = ['site','profile','research','publications','projects','media','teaching','photos'];
+  const files = ['site','profile','research','publications','projects','media','teaching','photos','news'];
   try{
     const res = await Promise.all(files.map(f => fetch(`data/${f}.json`).then(r=>{
       if(!r.ok) throw new Error(`data/${f}.json -> ${r.status}`); return r.json();
@@ -82,10 +83,21 @@ function buildNav(){
 }
 function setupNavToggle(){ const ul=$('#nav-links'); $('#nav-toggle').onclick = ()=> ul.classList.toggle('open'); }
 
+function placeBand(key){
+  const field=document.getElementById('field'), views=document.getElementById('views');
+  if(!field||!views) return;
+  const mode=BAND_POS[key]||'top', parent=views.parentNode;
+  if(mode==='none'){ field.style.display='none'; return; }
+  field.style.display='';
+  field.classList.toggle('at-bottom', mode==='bottom');
+  if(mode==='bottom'){ if(views.nextSibling!==field) parent.insertBefore(field, views.nextSibling); }
+  else { if(field.nextSibling!==views) parent.insertBefore(field, views); }
+}
 function showView(key){
   if(!VIEWS.includes(key)) key = (DATA.site.config.defaultTab||'home');
   $$('#views .view').forEach(v=> v.classList.toggle('active', v.id===key));
   $$('#nav-links a').forEach(a=> a.classList.toggle('current', a.dataset.nav===key));
+  placeBand(key);
   try{window.scrollTo(0,0);}catch(e){}
 }
 function router(){ showView((location.hash||'').replace('#','')); }
@@ -101,6 +113,7 @@ function renderAll(){
   renderOutreach();
   renderContrib();
   renderContact();
+  renderNews();
 }
 
 function applyStaticLabels(){
@@ -132,12 +145,17 @@ function renderHome(){
   $('#home-phrase').textContent = t(p.homePhrase);
   $('#home-ctas').innerHTML =
     `<a href="#contrib" class="btn btn-primary">${t(B.viewContributions)}</a>`+
+    `<a href="#novedades" class="btn btn-ghost">${t(B.news)}</a>`+
     `<a href="#contact" class="btn btn-ghost">${t(B.getInTouch)}</a>`;
   $('#home-social').innerHTML = socialHTML('big');
   const ph = DATA.photos.hero;
   $('#home-portrait').innerHTML = `<img src="${ph.src}" alt="${ph.alt||''}" loading="eager">`;
 }
 
+function flankSplit(cards){
+  const n=cards.length, per=Math.floor(n/2);
+  return { left:cards.slice(0,per), right:cards.slice(per,per*2), below:cards.slice(per*2) };
+}
 function renderAbout(){
   const p = DATA.profile;
   $('#about-heading').innerHTML = t(p.about.heading);
@@ -145,10 +163,13 @@ function renderAbout(){
   $('#about-positions').innerHTML = p.positions.map(pos=>{
     const main = pos.url ? `<a href="${pos.url}" target="_blank" rel="noopener">${t(pos.main)}</a>` : t(pos.main);
     return `<li><span class="pos-dot"></span><div><span class="pos-main">${main}</span><span class="pos-inst">${t(pos.inst)}</span></div></li>`; }).join('');
+  $('#about-interests').innerHTML = p.interests.map(i=>`<div class="interest-tag">${t(i)}</div>`).join('');
   const ap = DATA.photos.about;
   $('#about-photo').innerHTML = `<img src="${ap.src}" alt="${ap.alt||''}" loading="lazy">`;
-  $('#about-interests').innerHTML = p.interests.map(i=>`<div class="interest-tag">${t(i)}</div>`).join('');
-  $('#personal-grid').innerHTML = photoCards(DATA.photos.personal||[]);
+  const s = flankSplit(DATA.photos.personal||[]);
+  $('#about-imgs-left').innerHTML = photoCards(s.left);
+  $('#about-imgs-right').innerHTML = photoCards(s.right);
+  $('#about-imgs-below').innerHTML = photoCards(s.below);
 }
 
 function renderDedico(){
@@ -171,7 +192,10 @@ function renderOutreach(){
   const row = it => `<div class="teaching-item"><span class="ti-role">${t(it.role)}</span><span class="ti-inst">${t(it.inst)}</span><span class="ti-period">${t(it.period)}</span></div>`;
   $('#teaching-positions').innerHTML = DATA.teaching.positions.map(row).join('');
   $('#teaching-supervision').innerHTML = DATA.teaching.supervision.map(row).join('');
-  $('#outreach-grid').innerHTML = photoCards(DATA.photos.outreach||[]);
+  const s = flankSplit(DATA.photos.outreach||[]);
+  $('#outreach-imgs-left').innerHTML = photoCards(s.left);
+  $('#outreach-imgs-right').innerHTML = photoCards(s.right);
+  $('#outreach-imgs-below').innerHTML = photoCards(s.below);
 }
 
 function renderContrib(){
@@ -191,6 +215,19 @@ function renderContrib(){
     : `<button class="btn btn-ghost" disabled title="coming soon">${t(B.downloadCV)}</button>`;
 }
 
+function renderNews(){
+  const list=$('#news-list'); if(!list) return;
+  const items=(DATA.news&&DATA.news.items)||[];
+  if(!items.length){
+    const S=DATA.site.ui.labels;
+    list.innerHTML=`<div class="under-construction"><img class="uc-img" src="photos/under_construction.png" alt=""><div class="uc-sub">${t(S.underConstructionSub)}</div></div>`;
+    return;
+  }
+  list.innerHTML=items.map(n=>{
+    const link=n.link?`<a href="${n.link.url}" target="_blank" rel="noopener" class="news-link">${t(n.link.label)}</a>`:'';
+    return `<div class="news-item"><div class="news-date">${n.date||''}</div><div class="news-body"><div class="news-title">${t(n.title)}</div><p class="news-text">${t(n.body)}</p>${link}</div></div>`;
+  }).join('');
+}
 function renderContact(){
   const c = DATA.profile.contact, L = DATA.site.config.links;
   $('#contact-quote').innerHTML = `${t(c.quote)}<span class="qa">${c.quoteAuthor}</span>`;
