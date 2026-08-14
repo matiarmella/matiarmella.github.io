@@ -368,3 +368,15 @@ nav{padding:1.05rem 2rem;}
 /* arbol_2024 is a vertical/portrait photo — always show it at its original proportions (never the 4/3 grid crop) */
 .photo-card[data-full$="arbol_2024.jpg"] .ph{aspect-ratio:auto;}
 .photo-card[data-full$="arbol_2024.jpg"] img{height:auto;}
+
+/* ---- Data & resources: activity cards ---- */
+.datos-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.6rem;}
+.datos-card{display:block;padding:1.7rem;border:1px solid var(--line);background:var(--bg);position:relative;transition:border-color .25s,transform .25s;}
+a.datos-card.live{cursor:pointer;}
+a.datos-card.live:hover{border-color:var(--amber-dim);transform:translateY(-3px);}
+.datos-card.soon{opacity:.55;}
+.datos-ct{font-family:var(--serif);font-size:1.2rem;font-weight:500;color:var(--cream);margin-bottom:.55rem;line-height:1.2;}
+.datos-cd{font-size:.85rem;color:var(--text-dim);line-height:1.7;}
+.datos-open{display:inline-block;margin-top:1.1rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--amber);}
+.datos-badge{display:inline-block;margin-top:1.1rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber-dim);border:1px solid var(--line);padding:.28rem .65rem;}
+@media(max-width:900px){.datos-cards{grid-template-columns:1fr;}}

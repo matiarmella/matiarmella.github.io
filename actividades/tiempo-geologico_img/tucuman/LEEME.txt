@@ -1,0 +1,19 @@
+Fotos de los lugares para la actividad "El tiempo geológico".
+Dejá acá tus fotos con EXACTAMENTE estos nombres (jpg). Aparecen solas en la app.
+Si falta alguna, no pasa nada: se muestra un medallón con ícono.
+
+casa_historica.jpg
+facultad_iml.jpg
+san_javier.jpg
+horco_molle.jpg
+cadillal.jpg
+tafi.jpg
+termas_rio_hondo.jpg
+amaicha.jpg
+escaba.jpg
+cordoba.jpg
+buenos_aires.jpg
+plaza_independencia.jpg
+parque_9_julio.jpg
+
+(Recomendado: horizontales, ~1200 px de ancho.)

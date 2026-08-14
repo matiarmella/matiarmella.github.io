@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>El tiempo geológico caminando por Tucumán</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600&family=Barlow+Semi+Condensed:wght@300;400;500;600&family=Sometype+Mono:wght@400;500&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#0d0b08;--bg2:#141109;--bg3:#1c1810;--amber:#d4a843;--amber-dim:#8a6e2a;--cream:#ede5cc;--cream-dim:#a89870;--text:#cfc5ad;--text-dim:#7d7258;--line:rgba(212,168,67,.16);--sans:'Barlow Semi Condensed',system-ui,sans-serif;--serif:'Barlow Condensed',Georgia,sans-serif;--mono:'Sometype Mono','Courier New',monospace;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;font-size:16px;}
+  body.lang-es .en{display:none;} body.lang-en .es{display:none;}
+  a{color:var(--amber);}
+  header{padding:1.4rem 1.6rem .9rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;background:var(--bg2);}
+  .htitle{font-family:'Bebas Neue',var(--serif);font-size:2.2rem;font-weight:400;letter-spacing:.03em;color:var(--cream);line-height:1;}
+  .hsub{font-family:var(--sans);font-size:.95rem;color:var(--text-dim);margin-top:.4rem;max-width:720px;}
+  .lang-btn{flex:0 0 auto;border:1px solid var(--line);background:transparent;color:var(--cream-dim);font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;padding:.5rem .9rem;cursor:pointer;border-radius:3px;}
+  .lang-btn:hover{border-color:var(--amber-dim);color:var(--amber);}
+  .wrap{display:grid;grid-template-columns:1fr 360px;gap:0;height:60vh;min-height:440px;}
+  #map{width:100%;height:100%;background:#0a0906;}
+  .panel{background:var(--bg2);border-left:1px solid var(--line);padding:1.2rem;overflow-y:auto;}
+  .step{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin:0 0 .5rem;}
+  .ctl{margin-bottom:1.3rem;}
+  select{width:100%;background:var(--bg3);color:var(--cream);border:1px solid var(--line);padding:.65rem;font-family:var(--sans);font-size:.95rem;border-radius:3px;cursor:pointer;}
+  .hint{font-size:.82rem;color:var(--text-dim);margin-top:.45rem;}
+  .readout{background:var(--bg3);border:1px solid var(--line);border-radius:4px;padding:.85rem .9rem;margin-bottom:1rem;}
+  .readout .big{font-family:var(--serif);font-size:1.7rem;font-weight:500;color:var(--amber);line-height:1;}
+  .readout .lbl{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);}
+  .rrow{display:flex;justify-content:space-between;gap:.6rem;font-size:.85rem;margin-top:.55rem;color:var(--cream-dim);}
+  input[type=range]{width:100%;accent-color:var(--amber);margin:.35rem 0;height:22px;}
+  .nowbox{border:1px solid var(--amber-dim);border-radius:4px;padding:.9rem;background:rgba(212,168,67,.05);}
+  .now-age{font-family:var(--serif);font-size:2.1rem;font-weight:500;color:var(--cream);line-height:1;}
+  .now-era{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-top:.35rem;}
+  .now-event{margin-top:.8rem;border-top:1px solid var(--line);padding-top:.8rem;}
+  .ne-head{display:flex;align-items:center;gap:.6rem;}
+  .ne-icon{width:38px;height:38px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;border:1px solid var(--amber-dim);border-radius:50%;background:#14100a;}
+  .ne-name{font-family:var(--serif);font-size:1.25rem;color:var(--cream);font-weight:500;line-height:1.05;flex:1;}
+  .ne-age{font-family:var(--mono);font-size:.66rem;color:var(--amber);white-space:nowrap;}
+  .ne-text{font-size:.88rem;color:var(--cream-dim);line-height:1.65;margin-top:.55rem;}
+  .rrow.walk{margin-top:.9rem;}
+  .punch{margin-top:1rem;border-top:1px dashed var(--line);padding-top:1rem;font-size:.88rem;color:var(--text);}
+  .punch b{color:var(--amber);}
+  .timeline{padding:.9rem 1.4rem 1rem;background:var(--bg2);border-top:1px solid var(--line);}
+  .tl-title{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:.45rem;display:flex;justify-content:space-between;}
+  .tl-box{position:relative;}
+  .tl-row{position:relative;display:flex;overflow:hidden;}
+  .tl-row.eras{height:34px;border-radius:4px 4px 0 0;}
+  .tl-row.periods{height:30px;border-radius:0 0 4px 4px;}
+  .tl-seg{display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:500;font-size:.82rem;letter-spacing:.01em;white-space:nowrap;overflow:hidden;border-right:1px solid rgba(0,0,0,.28);padding:0 2px;}
+  .tl-ind{position:absolute;top:-3px;bottom:-3px;width:3px;background:#fff;box-shadow:0 0 7px #fff;left:0;z-index:5;pointer-events:none;transition:left .05s linear;}
+  .tl-scale{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.66rem;color:var(--text-dim);margin-top:.3rem;}
+  .zoom-wrap{margin-top:1rem;}
+  #tl-zoom{height:98px;border-radius:4px;overflow:visible;}
+  #tl-zoom .tl-seg{font-weight:600;overflow:visible;position:relative;}
+  #tl-zoom .tl-seg span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:.74rem;line-height:1;white-space:nowrap;letter-spacing:.02em;}
+  .zoom-box{position:relative;}
+  .tl-tick{position:absolute;top:-3px;height:104px;width:0;border-left:2px solid #f0603f;z-index:4;}
+  .tl-tick span{position:absolute;top:-16px;left:-8px;font-size:.85rem;}
+  .leaflet-popup-content-wrapper{background:var(--bg2);color:var(--text);border:1px solid var(--line);border-radius:4px;}
+  .leaflet-popup-tip{background:var(--bg2);border:1px solid var(--line);}
+  .leaflet-popup-content{margin:.75rem .95rem;font-family:var(--sans);min-width:210px;max-width:250px;}
+  .pop-t{font-family:var(--serif);font-size:1.2rem;color:var(--cream);font-weight:500;line-height:1.15;margin-bottom:.15rem;}
+  .pop-age{font-family:var(--mono);font-size:.68rem;color:var(--amber);letter-spacing:.06em;margin-bottom:.45rem;}
+  .pop-b{font-size:.86rem;color:var(--cream-dim);line-height:1.55;}
+  .pop-ph{position:relative;margin-top:.6rem;height:112px;border-radius:3px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;background:#14100a;}
+  .ph-emoji{font-size:48px;line-height:1;display:flex;align-items:center;justify-content:center;}
+  .ph-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .credit{font-family:var(--mono);font-size:.6rem;color:var(--text-dim);margin-top:.2rem;line-height:1.5;padding:0 1.4rem 1.1rem;}
+  @media(max-width:820px){.wrap{grid-template-columns:1fr;height:auto;}#map{height:50vh;}.panel{border-left:none;border-top:1px solid var(--line);}.htitle{font-size:1.8rem;}}
+</style>
+</head>
+<body class="lang-en">
+<header>
+  <div>
+    <div class="htitle"><span class="es">El tiempo geológico, caminando por Tucumán</span><span class="en">Geological time, walking across Tucumán</span></div>
+    <div class="hsub"><span class="es">Imaginá que el trayecto entre la Casa Histórica (la formación de la Tierra, hace 4.600 millones de años) y un lugar que elijas es TODA la historia del planeta. ¿Dónde caería cada gran momento de la vida?</span><span class="en">Imagine the trip from the Casa Histórica (the formation of Earth, 4.6 billion years ago) to a place you choose is the WHOLE history of the planet. Where would each great moment of life fall?</span></div>
+  </div>
+  <button class="lang-btn" id="lang" onclick="toggleLang()">ES</button>
+</header>
+<div class="wrap">
+  <div id="map"></div>
+  <div class="panel">
+    <div class="ctl">
+      <p class="step"><span class="es">1 · Elegí el destino (= hoy)</span><span class="en">1 · Pick the destination (= today)</span></p>
+      <select id="dest" onchange="onSelect()"></select>
+      <p class="hint"><span class="es">La Casa Histórica es la formación de la Tierra (4.600 Ma) y el destino es el presente. También podés hacer doble clic en cualquier punto del mapa.</span><span class="en">The Casa Histórica is Earth's formation (4,600 Ma) and the destination is the present. You can also double-click anywhere on the map.</span></p>
+    </div>
+    <div id="results" style="display:none">
+      <div class="readout">
+        <div class="lbl"><span class="es">Tu viaje</span><span class="en">Your journey</span></div>
+        <div><span class="big" id="dist-km">—</span> <span style="color:var(--cream-dim)">km</span></div>
+        <div class="rrow"><span><span class="es">Escala</span><span class="en">Scale</span></span><span id="scale">—</span></div>
+      </div>
+      <div class="ctl">
+        <p class="step"><span class="es">2 · Viajá en el tiempo</span><span class="en">2 · Travel through time</span></p>
+        <input type="range" id="slider" min="0" max="4600" value="0" step="2" oninput="onSlide()"/>
+        <div class="rrow"><span><span class="es">Formación</span><span class="en">Formation</span></span><span><span class="es">Hoy</span><span class="en">Today</span></span></div>
+      </div>
+      <div class="nowbox">
+        <div class="now-age" id="now-age">—</div>
+        <div class="now-era" id="now-era">—</div>
+        <div class="now-event">
+          <div class="ne-head"><span class="ne-icon" id="ne-icon"></span><span class="ne-name" id="ne-name"></span><span class="ne-age" id="ne-age"></span></div>
+          <p class="ne-text" id="ne-text"></p>
+        </div>
+        <div class="rrow walk"><span><span class="es">Distancia desde la Casa Histórica</span><span class="en">Distance from Casa Histórica</span></span><span id="walked">0 m</span></div>
+      </div>
+      <div class="punch" id="punch"></div>
+    </div>
+  </div>
+</div>
+<div class="timeline">
+  <div class="tl-title"><span><span class="es">Escala de tiempo geológico (colores ICS)</span><span class="en">Geological time scale (ICS colours)</span></span><span><span class="es">eras y períodos</span><span class="en">eras &amp; periods</span> · <a href="https://stratigraphy.org/" target="_blank" rel="noopener" style="color:var(--amber)">ICS · stratigraphy.org ↗</a></span></div>
+  <div class="tl-box"><div class="tl-row eras" id="tl-eras"></div><div class="tl-row periods" id="tl-periods"></div><div class="tl-ind" id="tl-ind"></div></div>
+  <div class="tl-scale"><span>4600 Ma</span><span>2300</span><span><span class="es">Hoy · 0</span><span class="en">Today · 0</span></span></div>
+  <div class="zoom-wrap">
+    <div class="tl-title"><span><span class="es">Fanerozoico ampliado (últimos 539 Ma) · períodos y extinciones</span><span class="en">Phanerozoic zoom (last 539 Ma) · periods &amp; extinctions</span></span></div>
+    <div class="zoom-box"><div class="tl-row" id="tl-zoom"></div><div id="tl-ticks"></div><div class="tl-ind" id="tl-ind2" style="display:none;height:104px;"></div></div>
+    <div class="tl-scale"><span>539 Ma</span><span><span class="es">Hoy</span><span class="en">Today</span></span></div>
+  </div>
+</div>
+<p class="credit"><span class="es">Actividad educativa · Cátedra de Paleontología · Mapa © OpenStreetMap · Colores según la Carta Cronoestratigráfica Internacional (ICS). Distancias reales; fechas aproximadas.</span><span class="en">Educational activity · Paleontology course · Map © OpenStreetMap · Colours from the International Chronostratigraphic Chart (ICS). Real distances; approximate dates.</span></p>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+/* ===== CONFIG DE CIUDAD (editar para otra ciudad) ===== */
+const CITY={center:[-26.95,-65.45],zoom:9};
+const ORIGIN={name:{es:"Casa Histórica de Tucumán",en:"Casa Histórica de Tucumán"},coords:[-26.8323,-65.2036],img:"tiempo-geologico_img/tucuman/casa_historica.jpg",
+  blurb:{es:"Nuestro punto de partida = la formación de la Tierra, hace 4.600 millones de años. Acá arranca todo.",en:"Our starting point = the formation of Earth, 4.6 billion years ago. Everything begins here."}};
+const LANDMARKS=[
+ {name:{es:"Facultad de Cs. Naturales e IML",en:"Facultad de Cs. Naturales e IML"},coords:[-26.830534,-65.221140],preset:true,img:"tiempo-geologico_img/tucuman/facultad_iml.jpg",blurb:{es:"Donde se estudian los fósiles de la provincia. Mi lugar en la facultad.",en:"Where the province's fossils are studied. My place at the faculty."}},
+ {name:{es:"Cerro San Javier",en:"San Javier Hill"},coords:[-26.7936,-65.3547],preset:true,img:"tiempo-geologico_img/tucuman/san_javier.jpg",blurb:{es:"El cerro que abraza la ciudad, con el Cristo mirando el valle.",en:"The hill that hugs the city, with the Christ statue overlooking the valley."}},
+ {name:{es:"Reserva Experimental Horco Molle",en:"Reserva Experimental Horco Molle"},coords:[-26.792919,-65.316354],preset:true,img:"tiempo-geologico_img/tucuman/horco_molle.jpg",blurb:{es:"Reserva de la Facultad en plena yunga, al pie del San Javier. Salida clásica de campo.",en:"A UNT reserve in the cloud forest, at the foot of San Javier hill. A classic field trip."}},
+ {name:{es:"Dique El Cadillal",en:"Dique El Cadillal"},coords:[-26.6265,-65.1965],preset:true,img:"tiempo-geologico_img/tucuman/cadillal.jpg",blurb:{es:"El embalse entre cerros, al norte de la capital.",en:"The reservoir among the hills, north of the city."}},
+ {name:{es:"Tafí del Valle",en:"Tafí del Valle"},coords:[-26.8525,-65.7089],preset:true,img:"tiempo-geologico_img/tucuman/tafi.jpg",blurb:{es:"Valle de montaña a ~2000 m, camino a los Valles Calchaquíes.",en:"A mountain valley at ~2000 m, toward the Calchaquí Valleys."}},
+ {name:{es:"Termas de Río Hondo",en:"Termas de Río Hondo"},coords:[-27.4931,-64.8592],preset:true,img:"tiempo-geologico_img/tucuman/termas_rio_hondo.jpg",blurb:{es:"La ciudad de las aguas termales, en Santiago del Estero.",en:"The hot-springs city, in Santiago del Estero province."}},
+ {name:{es:"Amaicha del Valle",en:"Amaicha del Valle"},coords:[-26.5928,-65.9231],preset:true,img:"tiempo-geologico_img/tucuman/amaicha.jpg",blurb:{es:"Pueblo de sol casi todo el año, en los Valles Calchaquíes.",en:"A sunny valley town in the Calchaquí Valleys."}},
+ {name:{es:"Dique Escaba",en:"Dique Escaba"},coords:[-27.6650,-65.7850],preset:true,img:"tiempo-geologico_img/tucuman/escaba.jpg",blurb:{es:"El gran embalse del sur tucumano, entre montañas y selva.",en:"The great reservoir of southern Tucumán, among mountains and forest."}},
+ {name:{es:"Córdoba",en:"Córdoba"},coords:[-31.4201,-64.1888],preset:true,img:"tiempo-geologico_img/tucuman/cordoba.jpg",blurb:{es:"La Docta, en el centro del país. Ya nos vamos lejos de Tucumán.",en:"Córdoba city, in the country's center. Now we're far from Tucumán."}},
+ {name:{es:"Buenos Aires",en:"Buenos Aires"},coords:[-34.6037,-58.3816],preset:true,img:"tiempo-geologico_img/tucuman/buenos_aires.jpg",blurb:{es:"La capital del país, a más de mil kilómetros. El viaje más largo.",en:"The nation's capital, over a thousand km away. The longest trip."}},
+ {name:{es:"Plaza Independencia",en:"Plaza Independencia"},coords:[-26.8285,-65.2042],preset:false,img:"tiempo-geologico_img/tucuman/plaza_independencia.jpg",blurb:{es:"El corazón de la ciudad, a la vuelta de la Casa Histórica.",en:"The heart of the city, around the corner."}},
+ {name:{es:"Parque 9 de Julio",en:"Parque 9 de Julio"},coords:[-26.8262,-65.1930],preset:false,img:"tiempo-geologico_img/tucuman/parque_9_julio.jpg",blurb:{es:"El gran pulmón verde de San Miguel de Tucumán.",en:"The big green lung of the city."}}
+];
+/* ===== SILUETAS (SVG) ===== */
+const SVGS={
+ planet:`<circle cx="30" cy="32" r="17"/><ellipse cx="32" cy="34" rx="29" ry="7" fill="none" stroke="currentColor" stroke-width="3.5" opacity=".75"/>`,
+ microbe:`<rect x="6" y="26" width="26" height="12" rx="6"/><circle cx="45" cy="23" r="7"/><circle cx="50" cy="42" r="5"/>`,
+ oxygen:`<circle cx="23" cy="42" r="10"/><circle cx="42" cy="30" r="7"/><circle cx="33" cy="17" r="5"/>`,
+ cell:`<circle cx="32" cy="32" r="19" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="34" cy="30" r="7"/><circle cx="22" cy="40" r="3"/>`,
+ snow:`<g stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><line x1="32" y1="8" x2="32" y2="56"/><line x1="12" y1="20" x2="52" y2="44"/><line x1="52" y1="20" x2="12" y2="44"/><line x1="32" y1="8" x2="26" y2="16"/><line x1="32" y1="8" x2="38" y2="16"/><line x1="32" y1="56" x2="26" y2="48"/><line x1="32" y1="56" x2="38" y2="48"/></g>`,
+ frond:`<path d="M32 58 C 19 42 19 20 32 6 C 45 20 45 42 32 58 Z"/><line x1="32" y1="12" x2="32" y2="54" stroke="#14100a" stroke-width="2.5"/>`,
+ trilobite:`<path d="M32 8 C 45 10 46 32 43 46 C 41 55 23 55 21 46 C 18 32 19 10 32 8 Z"/><g stroke="#14100a" stroke-width="2"><line x1="21" y1="24" x2="43" y2="24"/><line x1="20" y1="34" x2="44" y2="34"/><line x1="22" y1="44" x2="42" y2="44"/><line x1="32" y1="12" x2="32" y2="52"/></g>`,
+ sprout:`<path d="M32 56 V 28" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M32 34 C 18 34 14 20 14 20 C 28 20 32 30 32 34 Z"/><path d="M32 28 C 46 28 50 14 50 14 C 36 14 32 24 32 28 Z"/>`,
+ skull:`<path d="M32 6 C 17 6 11 18 11 30 C 11 38 15 42 19 45 L19 52 C19 55 23 56 26 53 C28 55 30 55 32 53 C34 55 36 55 38 53 C41 56 45 55 45 52 L45 45 C49 42 53 38 53 30 C53 18 47 6 32 6 Z"/><circle cx="23" cy="31" r="5" fill="#14100a"/><circle cx="41" cy="31" r="5" fill="#14100a"/><path d="M29 42 l3 -5 l3 5 z" fill="#14100a"/>`,
+ fish:`<path d="M6 32 C 20 17 44 17 52 32 C 44 47 20 47 6 32 Z"/><path d="M50 32 L62 22 L59 32 L62 42 Z"/><circle cx="18" cy="29" r="2.6" fill="#14100a"/>`,
+ tetrapod:`<path d="M6 30 C 20 26 42 26 52 29 C 58 30.5 58 34 52 35 C 42 38 20 38 10 35 Z"/><g stroke="currentColor" stroke-width="4.5" stroke-linecap="round"><line x1="18" y1="35" x2="13" y2="48"/><line x1="26" y1="36" x2="30" y2="48"/><line x1="40" y1="36" x2="35" y2="48"/><line x1="48" y1="35" x2="53" y2="48"/></g>`,
+ egg:`<ellipse cx="32" cy="35" rx="16" ry="22"/><path d="M22 30 l6 5 l-5 5 l7 4" fill="none" stroke="#14100a" stroke-width="2.2"/>`,
+ dino:`<path d="M6 48 C 10 46 15 46 18 47 C 20 30 27 19 35 17 C 37 10 44 10 44 17 C 44 22 39 24 36 24 C 32 30 33 40 35 46 C 43 46 51 46 57 48 C 57 52 51 52 47 52 L 12 52 C 8 52 6 50 6 48 Z"/>`,
+ flower:`<g fill="currentColor"><ellipse cx="32" cy="13" rx="5.5" ry="9"/><ellipse cx="32" cy="39" rx="5.5" ry="9"/><ellipse cx="19" cy="26" rx="9" ry="5.5"/><ellipse cx="45" cy="26" rx="9" ry="5.5"/></g><circle cx="32" cy="26" r="5.5" fill="#14100a"/><line x1="32" y1="34" x2="32" y2="58" stroke="currentColor" stroke-width="3.5"/>`,
+ comet:`<circle cx="23" cy="23" r="12"/><g stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><line x1="35" y1="35" x2="55" y2="55"/><line x1="30" y1="40" x2="45" y2="57"/><line x1="40" y1="30" x2="57" y2="45"/></g>`,
+ hominin:`<circle cx="28" cy="12" r="6.5"/><path d="M28 18 C 30 26 30 32 29 38" stroke="currentColor" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M28 24 L17 31 M29 24 L41 27" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/><path d="M29 38 L20 54 M29 38 L40 51" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>`,
+ human:`<circle cx="32" cy="12" r="7"/><path d="M32 20 L32 40" stroke="currentColor" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M32 26 L21 34 M32 26 L43 34" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/><path d="M32 40 L26 57 M32 40 L38 57" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>`
+};
+function svgTag(key,color,size){return '<svg viewBox="0 0 64 64" width="'+size+'" height="'+size+'" style="color:'+color+'">'+(SVGS[key]||'')+'</svg>';}
+const EMOJI={planet:"🌍",microbe:"🦠",oxygen:"💨",cell:"🔬",snow:"❄️",frond:"🪼",trilobite:"🐚",sprout:"🌱",skull:"💀",fish:"🐟",tetrapod:"🦎",egg:"🥚",dino:"🦕",flower:"🌸",comet:"☄️",hominin:"🚶",human:"👤"};
+
+/* ===== HITOS ===== */
+const MILESTONES=[
+ {age:4600,key:"planet",name:{es:"Formación de la Tierra",en:"Formation of Earth"},blurb:{es:"La Tierra se forma por acreción de polvo y rocas alrededor del joven Sol. Es un mundo sin corteza estable, bombardeado por meteoritos y con océanos de magma. Poco después, un impacto gigante habría originado la Luna. Todavía no existe la vida.",en:"Earth forms by accretion of dust and rock around the young Sun. It's a world with no stable crust, battered by meteorites, with magma oceans. Soon after, a giant impact likely formed the Moon. Life does not yet exist."}},
+ {age:3500,key:"microbe",name:{es:"Primeras formas de vida",en:"First life"},blurb:{es:"Aparecen los primeros organismos: procariotas unicelulares sin núcleo (bacterias y arqueas). Los registros más antiguos incluyen estromatolitos y microfósiles. El metabolismo es anaeróbico y la vida se limita a los océanos. Es el linaje del que descendemos todos los seres vivos.",en:"The first organisms appear: single-celled prokaryotes without a nucleus (bacteria and archaea). The oldest records include stromatolites and microfossils. Metabolism is anaerobic and life is confined to the oceans. This is the lineage all living things descend from."}},
+ {age:2400,key:"oxygen",name:{es:"Gran Oxidación",en:"Great Oxidation"},blurb:{es:"Las cianobacterias, mediante fotosíntesis oxigénica, empiezan a liberar oxígeno que se acumula en la atmósfera. Para muchos organismos anaeróbicos fue un veneno: una de las primeras grandes crisis biológicas. También precipitó hierro (formaciones bandeadas) y habría disparado glaciaciones. Cambió para siempre la química del planeta.",en:"Cyanobacteria, via oxygenic photosynthesis, begin releasing oxygen that builds up in the atmosphere. For many anaerobes it was a poison — one of the first great biological crises. It also precipitated iron (banded iron formations) and may have triggered glaciations. It changed the planet's chemistry forever."}},
+ {age:1600,key:"cell",name:{es:"Primeras células eucariotas",en:"First eukaryotes"},blurb:{es:"Surgen las células eucariotas: con núcleo y organelas (mitocondrias y luego cloroplastos) originadas por endosimbiosis. Son más grandes y complejas que las procariotas. De este tipo celular derivan todos los protistas, hongos, plantas y animales. Un salto clave hacia la vida compleja.",en:"Eukaryotic cells arise: with a nucleus and organelles (mitochondria, later chloroplasts) from endosymbiosis. They are larger and more complex than prokaryotes. From this cell type come all protists, fungi, plants and animals. A key leap toward complex life."}},
+ {age:720,key:"snow",name:{es:"Tierra bola de nieve",en:"Snowball Earth"},blurb:{es:"Durante el Criogénico, la Tierra sufre glaciaciones extremas: el hielo pudo llegar casi hasta el ecuador. Estas 'Tierra bola de nieve' pusieron a prueba a la vida, que sobrevivió en refugios. Al descongelarse, cambian drásticamente las condiciones ambientales. Poco después aparecerán los primeros animales.",en:"During the Cryogenian, Earth undergoes extreme glaciations — ice may have reached nearly to the equator. These 'Snowball Earth' events tested life, which survived in refuges. As the planet thawed, conditions shifted drastically. Soon after, the first animals appear."}},
+ {age:575,key:"frond",name:{es:"Primeros animales (Ediacara)",en:"First animals (Ediacara)"},blurb:{es:"Aparece la biota de Ediacara: los primeros animales pluricelulares, de cuerpo blando y formas extrañas (discos, frondas, segmentos). Vivían en el fondo marino y carecían de partes duras. Muchos son difíciles de asignar a los grupos actuales. Marcan el inicio de la vida animal.",en:"The Ediacaran biota appears: the first multicellular animals, soft-bodied and strange (discs, fronds, segments). They lived on the seafloor and had no hard parts. Many are hard to place among living groups. They mark the dawn of animal life."}},
+ {age:540,key:"trilobite",name:{es:"Explosión cámbrica",en:"Cambrian explosion"},blurb:{es:"En pocos millones de años aparece la mayoría de los planes corporales (phyla) animales que conocemos. Surgen los primeros esqueletos y caparazones mineralizados, y con ellos un rico registro fósil (como el de Burgess Shale). Aparecen depredadores y presas, y se complejizan las cadenas tróficas. Es uno de los eventos más importantes de la historia de la vida.",en:"In just a few million years most animal body plans (phyla) we know appear. The first mineralized skeletons and shells arise, and with them a rich fossil record (e.g. the Burgess Shale). Predators and prey appear, and food webs grow complex. One of the most important events in the history of life."}},
+ {age:470,key:"sprout",name:{es:"Primeras plantas terrestres",en:"First land plants"},blurb:{es:"Las plantas colonizan la tierra firme, primero como formas pequeñas parecidas a musgos, sin tejidos vasculares. La cobertura vegetal empieza a modificar suelos, atmósfera y clima. Abre el camino para que después los animales también salgan del agua. La superficie de los continentes empieza a volverse verde.",en:"Plants colonize dry land, first as small moss-like forms without vascular tissue. Plant cover begins to modify soils, atmosphere and climate. It paves the way for animals to leave the water too. The continents start to turn green."}},
+ {age:445,type:"ext",key:"skull",name:{es:"Extinción del Ordovícico",en:"End-Ordovician extinction"},blurb:{es:"Primera de las cinco grandes extinciones. Una intensa glaciación y cambios en el nivel del mar afectan sobre todo a la fauna marina (braquiópodos, trilobites, graptolites). Desaparece un enorme porcentaje de las especies. La vida en tierra, aún incipiente, se ve menos afectada.",en:"The first of the Big Five extinctions. An intense glaciation and sea-level changes hit marine faunas hardest (brachiopods, trilobites, graptolites). A huge share of species vanish. Life on land, still nascent, is less affected."}},
+ {age:425,key:"fish",name:{es:"Peces con mandíbula (gnatostomados)",en:"Jawed fishes (gnathostomes)"},blurb:{es:"Se diversifican los gnatostomados: vertebrados con mandíbulas, que permiten morder y depredar activamente. Incluyen a los placodermos y a los ancestros de los peces cartilaginosos y óseos. Las mandíbulas y, más tarde, las aletas pares son innovaciones clave. De este grupo derivan casi todos los vertebrados actuales, nosotros incluidos.",en:"Gnathostomes diversify: vertebrates with jaws, enabling biting and active predation. They include placoderms and the ancestors of cartilaginous and bony fishes. Jaws and, later, paired fins are key innovations. Almost all living vertebrates — us included — descend from this group."}},
+ {age:375,key:"tetrapod",name:{es:"Primeros tetrápodos",en:"First tetrapods"},blurb:{es:"Algunos peces de aletas lobuladas evolucionan miembros con dedos y comienzan a explorar la tierra firme. Son los primeros tetrápodos, todavía muy ligados al agua. Formas como Tiktaalik ilustran esa transición. De ellos surgirán los anfibios, reptiles, aves y mamíferos.",en:"Some lobe-finned fishes evolve limbs with digits and start exploring land. These are the first tetrapods, still tied to water. Forms like Tiktaalik illustrate the transition. From them will come amphibians, reptiles, birds and mammals."}},
+ {age:372,type:"ext",key:"skull",name:{es:"Extinción del Devónico",en:"Late Devonian extinction"},blurb:{es:"Segunda gran extinción, en realidad una serie de pulsos de crisis. Golpea sobre todo a los ecosistemas marinos, incluidos los arrecifes y muchos grupos de peces. Se vincula a cambios en el oxígeno y el clima. La vida terrestre continúa su expansión.",en:"The second mass extinction, actually a series of crisis pulses. It hits marine ecosystems hardest, including reefs and many fish groups. It is linked to changes in oxygen and climate. Life on land keeps expanding."}},
+ {age:320,key:"egg",name:{es:"Primeros amniotas",en:"First amniotes"},blurb:{es:"Aparece el huevo amniótico, con membranas que protegen al embrión y evitan que se seque. Esto libera a los vertebrados de la dependencia del agua para reproducirse. Los amniotas se dividirán en dos grandes linajes: sinápsidos (hacia los mamíferos) y saurópsidos (hacia reptiles y aves). Un paso clave para conquistar los ambientes terrestres.",en:"The amniotic egg appears, with membranes that protect the embryo and keep it from drying out. This frees vertebrates from needing water to reproduce. Amniotes split into two great lineages: synapsids (toward mammals) and sauropsids (toward reptiles and birds). A key step in conquering land."}},
+ {age:252,type:"ext",key:"skull",name:{es:"Gran extinción Pérmico-Triásica",en:"Permian–Triassic extinction"},blurb:{es:"La mayor extinción conocida: desaparece cerca del 80-90% de las especies marinas y gran parte de las terrestres. Se asocia al vulcanismo masivo de los traps siberianos y a un fuerte calentamiento y acidificación de los océanos. La vida tarda millones de años en recuperarse. Reordena por completo los ecosistemas.",en:"The largest known extinction: about 80–90% of marine species and much of life on land disappear. It is linked to the massive Siberian Traps volcanism and strong warming and ocean acidification. Life takes millions of years to recover. It completely reshuffles ecosystems."}},
+ {age:230,key:"dino",name:{es:"Primeros dinosaurios y mamíferos",en:"First dinosaurs and mammals"},blurb:{es:"En el Triásico aparecen los primeros dinosaurios y, casi al mismo tiempo, los primeros mamíferos, pequeños y nocturnos. Los dinosaurios se volverán dominantes durante todo el Mesozoico. Los mamíferos quedarán en un segundo plano por más de 150 millones de años. Ambos linajes conviven desde su origen.",en:"In the Triassic the first dinosaurs appear and, almost at the same time, the first mammals — small and nocturnal. Dinosaurs will dominate throughout the Mesozoic. Mammals stay in the background for over 150 million years. Both lineages have coexisted since their origin."}},
+ {age:201,type:"ext",key:"skull",name:{es:"Extinción del Triásico",en:"End-Triassic extinction"},blurb:{es:"Cuarta gran extinción, al final del Triásico. Elimina a muchos competidores de los dinosaurios y a varios grupos marinos. Se asocia al vulcanismo ligado a la apertura del océano Atlántico. Tras ella, los dinosaurios se expanden y dominan el Jurásico.",en:"The fourth mass extinction, at the end of the Triassic. It removes many of the dinosaurs' competitors and several marine groups. It is linked to volcanism from the opening of the Atlantic. Afterward, dinosaurs expand and dominate the Jurassic."}},
+ {age:130,key:"flower",name:{es:"Primeras plantas con flor",en:"First flowering plants"},blurb:{es:"Se diversifican las angiospermas (plantas con flor y fruto). Su relación con insectos polinizadores impulsa una coevolución explosiva. Con el tiempo transforman los paisajes y las redes tróficas terrestres. Hoy son el grupo de plantas dominante.",en:"Angiosperms (flowering, fruiting plants) diversify. Their relationship with insect pollinators drives explosive coevolution. Over time they transform landscapes and terrestrial food webs. Today they are the dominant plant group."}},
+ {age:66,type:"ext",key:"comet",name:{es:"Extinción K-Pg",en:"K–Pg extinction"},blurb:{es:"Un asteroide impacta en la actual península de Yucatán (cráter de Chicxulub), sumado a un intenso vulcanismo (traps del Decán). Se extinguen los dinosaurios no avianos, los grandes reptiles marinos y muchos otros grupos. Las aves son los únicos dinosaurios que sobreviven. Los mamíferos aprovechan los nichos vacíos y se diversifican.",en:"An asteroid strikes today's Yucatán Peninsula (Chicxulub crater), together with intense volcanism (Deccan Traps). Non-avian dinosaurs, large marine reptiles and many other groups go extinct. Birds are the only surviving dinosaurs. Mammals seize the empty niches and diversify."}},
+ {age:7,key:"hominin",name:{es:"Primeros homininos",en:"First hominins"},blurb:{es:"Se separa el linaje de los homininos del de los chimpancés. Aparecen formas que combinan rasgos arborícolas con un bipedismo incipiente (como Sahelanthropus). Es el comienzo de nuestra propia rama evolutiva. Todavía falta muchísimo para el Homo sapiens.",en:"The hominin lineage splits from that of chimpanzees. Forms appear that mix tree-dwelling traits with early bipedalism (e.g. Sahelanthropus). This is the start of our own evolutionary branch. Homo sapiens is still very far off."}},
+ {age:0.3,key:"human",name:{es:"Homo sapiens",en:"Homo sapiens"},blurb:{es:"Aparece nuestra especie, Homo sapiens, en África, hace unos 300.000 años. Toda la historia registrada —agricultura, ciudades, escritura, ciencia— ocurre en los últimos milenios. En la escala de este viaje, cabe en los últimos centímetros. Somos un capítulo brevísimo de la historia de la vida.",en:"Our species, Homo sapiens, appears in Africa about 300,000 years ago. All recorded history — agriculture, cities, writing, science — happens in the last few millennia. On this journey's scale, it fits in the last few centimeters. We are a very brief chapter in the history of life."}}
+];
+const TOTAL=4600,PHAN=538.8;
+const ERAS=[{es:"Hádico",en:"Hadean",from:4600,to:4031,color:"#421C52"},{es:"Arcaico",en:"Archean",from:4031,to:2500,color:"#F0047F"},{es:"Proterozoico",en:"Proterozoic",from:2500,to:538.8,color:"#F73563"},{es:"Paleozoico",en:"Paleozoic",from:538.8,to:251.9,color:"#99C08D"},{es:"Mesozoico",en:"Mesozoic",from:251.9,to:66,color:"#67C5CA"},{es:"Cenozoico",en:"Cenozoic",from:66,to:0,color:"#F2F91D"}];
+const PERIODS=[{es:"Cámbrico",en:"Cambrian",ab:"Cám",from:538.8,to:485.4,color:"#7FA056"},{es:"Ordovícico",en:"Ordovician",ab:"Ord",from:485.4,to:443.8,color:"#009270"},{es:"Silúrico",en:"Silurian",ab:"Sil",from:443.8,to:419.2,color:"#B3E1B6"},{es:"Devónico",en:"Devonian",ab:"Dev",from:419.2,to:358.9,color:"#CB8C37"},{es:"Carbonífero",en:"Carboniferous",ab:"Carb",from:358.9,to:298.9,color:"#67A599"},{es:"Pérmico",en:"Permian",ab:"Pér",from:298.9,to:251.9,color:"#F04028"},{es:"Triásico",en:"Triassic",ab:"Tri",from:251.9,to:201.4,color:"#812B92"},{es:"Jurásico",en:"Jurassic",ab:"Jur",from:201.4,to:145.0,color:"#34B2C9"},{es:"Cretácico",en:"Cretaceous",ab:"Cret",from:145.0,to:66.0,color:"#7FC64E"},{es:"Paleógeno",en:"Paleogene",ab:"Pg",from:66.0,to:23.03,color:"#FD9A52"},{es:"Neógeno",en:"Neogene",ab:"Ng",from:23.03,to:2.58,color:"#FFE619"},{es:"Cuaternario",en:"Quaternary",ab:"Cu",from:2.58,to:0,color:"#F9F97F"}];
+
+let lang="en",map,routeLayer,traveler,dest=null,distM=0;const L_=L;
+function t(o){return o[lang];}
+function txtColor(hex){const c=hex.replace('#','');const r=parseInt(c.substr(0,2),16),g=parseInt(c.substr(2,2),16),b=parseInt(c.substr(4,2),16);return (0.299*r+0.587*g+0.114*b)>140?'#1a1408':'#fff';}
+function toggleLang(){lang=(lang==="es")?"en":"es";document.body.className="lang-"+lang;document.getElementById("lang").textContent=(lang==="es")?"EN":"ES";refreshSelectLabels();buildTimeline();if(dest){drawMilestones();onSlide();updateReadouts();}}
+function initMap(){
+  map=L_.map('map',{scrollWheelZoom:true,doubleClickZoom:false}).setView(CITY.center,CITY.zoom);
+  L_.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
+  L_.marker(ORIGIN.coords,{icon:emojiIcon("🌍","#2fae63")}).addTo(map).bindPopup(popHTML({es:"Formación de la Tierra · "+ORIGIN.name.es,en:"Formation of Earth · "+ORIGIN.name.en},4600,ORIGIN.blurb,medSvg("planet"),"#421C52",ORIGIN.img));
+  LANDMARKS.forEach(l=>{L_.circleMarker(l.coords,{radius:5,color:"#d4a843",weight:1,fillColor:"#d4a843",fillOpacity:.5}).addTo(map).bindPopup(popHTML(l.name,null,l.blurb,'<span class="ph-emoji">📍</span>',"#d4a843",l.img));});
+  const sel=document.getElementById("dest");const o0=document.createElement("option");o0.value="";sel.appendChild(o0);
+  LANDMARKS.filter(l=>l.preset).forEach(l=>{const idx=LANDMARKS.indexOf(l);const o=document.createElement("option");o.dataset.i=idx;sel.appendChild(o);});
+  refreshSelectLabels();
+  map.on('dblclick',e=>setDestination(e.latlng,{es:"Punto elegido (hoy)",en:"Chosen point (today)"},null));
+  buildTimeline();
+}
+function refreshSelectLabels(){const sel=document.getElementById("dest");sel.options[0].textContent=(lang==="es")?"— elegí un lugar —":"— pick a place —";[...sel.options].forEach(o=>{if(o.dataset.i!=null)o.textContent=t(LANDMARKS[+o.dataset.i].name);});}
+function svgMarker(key,color){return L_.divIcon({className:'',html:'<div style="width:27px;height:27px;border-radius:50%;background:#14100acc;border:1px solid '+color+';display:flex;align-items:center;justify-content:center;">'+svgTag(key,color,17)+'</div>',iconSize:[27,27],iconAnchor:[13,13]});}
+function emojiIcon(em,ring){return L_.divIcon({className:'',html:'<div style="font-size:18px;line-height:24px;width:24px;height:24px;text-align:center;border-radius:50%;background:#1c181099;border:1px solid '+(ring||'#8a6e2a')+';">'+em+'</div>',iconSize:[24,24],iconAnchor:[12,12]});}
+function medSvg(key){return '<span class="ph-emoji">'+EMOJI[key]+'</span>';}
+function fmtAge(a){if(a<=0)return(lang==="es")?"hoy":"today";if(a<1)return Math.round(a*1000)+((lang==="es")?" mil años atrás":" ka ago");return a+((lang==="es")?" Ma":" Ma ago");}
+function mediaHTML(iconHTML,tint,img){const im=img?'<img class="ph-img" src="'+img+'" alt="" onerror="this.remove()">':'';return '<div class="pop-ph" style="background:radial-gradient(circle at 50% 34%, '+tint+'40, #14100a 78%)">'+iconHTML+im+'</div>';}
+function popHTML(name,age,blurb,iconHTML,tint,img){const al=(age!=null)?'<div class="pop-age">'+fmtAge(age)+'</div>':'';return '<div class="pop-t"><span class="es">'+name.es+'</span><span class="en">'+name.en+'</span></div>'+al+'<div class="pop-b"><span class="es">'+blurb.es+'</span><span class="en">'+blurb.en+'</span></div>'+mediaHTML(iconHTML,tint,img);}
+function interp(frac){const a=ORIGIN.coords,b=dest.latlng;return[a[0]+(b.lat-a[0])*frac,a[1]+(b.lng-a[1])*frac];}
+function setDestination(latlng,name,img){dest={latlng:L_.latLng(latlng),name:name,img:img||null};distM=map.distance(ORIGIN.coords,dest.latlng);document.getElementById("results").style.display="block";drawMilestones();document.getElementById("slider").value=0;onSlide();updateReadouts();}
+function onSelect(){const o=document.getElementById("dest").selectedOptions[0];if(!o||o.dataset.i==null)return;const l=LANDMARKS[+o.dataset.i];setDestination(l.coords,l.name,l.img);}
+function drawMilestones(){
+  if(routeLayer)map.removeLayer(routeLayer);routeLayer=L_.layerGroup().addTo(map);
+  L_.polyline([ORIGIN.coords,dest.latlng],{color:"#d4a843",weight:2,dashArray:"4 6",opacity:.7}).addTo(routeLayer);
+  MILESTONES.forEach(m=>{const frac=(TOTAL-m.age)/TOTAL;const ring=(m.type==="ext")?"#f0603f":"#d4a843";L_.marker(interp(frac),{icon:emojiIcon(EMOJI[m.key],ring)}).addTo(routeLayer).bindPopup(popHTML(m.name,m.age,m.blurb,medSvg(m.key),eraFor(m.age).color));});
+  L_.marker(dest.latlng,{icon:emojiIcon("🏁")}).addTo(routeLayer).bindPopup(popHTML(dest.name,0,{es:"El final del viaje: el presente, hoy.",en:"The end of the trip: the present, today."},'<span class="ph-emoji">🏁</span>',"#F2F91D",dest.img));
+  traveler=L_.marker(ORIGIN.coords,{icon:emojiIcon("🔴","#f0603f")}).addTo(routeLayer);
+  map.fitBounds(L_.latLngBounds([ORIGIN.coords,dest.latlng]).pad(0.25));
+}
+function updateReadouts(){
+  const km=distM/1000;document.getElementById("dist-km").textContent=km.toFixed(1);
+  document.getElementById("scale").textContent="1 km ≈ "+Math.round(TOTAL/km)+" Ma";
+  const mPerMa=distM/TOTAL,humanM=0.3*mPerMa,indepMM=((2026-1816)/1e6)*mPerMa*1000;
+  const human=humanM<1?Math.round(humanM*100)+" cm":humanM.toFixed(1)+" m";
+  document.getElementById("punch").innerHTML='<span class="es">En este viaje de <b>'+km.toFixed(1)+' km</b>, casi todo el recorrido pasa <u>antes</u> de que exista algo parecido a nosotros. Toda la existencia de <b>Homo sapiens</b> (300.000 años) mide apenas <b>'+human+'</b>, justo al llegar al destino. Y la independencia (1816) queda a <b>'+indepMM.toFixed(1)+' mm</b> del final.</span><span class="en">On this <b>'+km.toFixed(1)+' km</b> trip, almost the whole path happens <u>before</u> anything like us exists. All of <b>Homo sapiens</b> (300,000 years) is just <b>'+human+'</b>, right as you reach the destination. And independence (1816) sits <b>'+indepMM.toFixed(1)+' mm</b> from the end.</span>';
+}
+function eraFor(age){for(const e of ERAS){if(age<=e.from&&age>=e.to)return e;}return ERAS[0];}
+function nearestMilestone(age){let best=MILESTONES[0],d=1e9;MILESTONES.forEach(m=>{const dd=Math.abs(m.age-age);if(dd<d){d=dd;best=m;}});return best;}
+function onSlide(){
+  if(!dest)return;
+  const elapsed=+document.getElementById("slider").value,frac=elapsed/TOTAL,age=TOTAL-elapsed;
+  if(traveler)traveler.setLatLng(interp(frac));
+  document.getElementById("now-age").innerHTML=age<1?(Math.round(age*1000)+' <span style="font-size:1rem;color:var(--cream-dim)">'+(lang==="es"?"mil años atrás":"ka ago")+'</span>'):(Math.round(age)+' <span style="font-size:1rem;color:var(--cream-dim)">Ma</span>');
+  const eon=eraFor(age);document.getElementById("now-era").textContent=t(eon);
+  const nm=nearestMilestone(age);
+  document.getElementById("ne-icon").innerHTML='<span style="font-size:20px;line-height:1">'+EMOJI[nm.key]+'</span>';
+  document.getElementById("ne-name").textContent=t(nm.name);
+  document.getElementById("ne-age").textContent=fmtAge(nm.age);
+  document.getElementById("ne-text").textContent=t(nm.blurb);
+  const walked=frac*distM;document.getElementById("walked").textContent=walked<1000?Math.round(walked)+" m":(walked/1000).toFixed(2)+" km";
+  document.getElementById("tl-ind").style.left=(frac*100)+"%";
+  const i2=document.getElementById("tl-ind2");if(age<=PHAN){i2.style.display="block";i2.style.left=((PHAN-age)/PHAN*100)+"%";}else i2.style.display="none";
+}
+function buildTimeline(){
+  const eras=document.getElementById("tl-eras");eras.innerHTML="";
+  ERAS.forEach(e=>{const w=(e.from-e.to)/TOTAL*100;const d=document.createElement("div");d.className="tl-seg";d.style.width=w+"%";d.style.background=e.color;d.style.color=txtColor(e.color);d.title=t(e);d.textContent=(w>6?t(e):"");eras.appendChild(d);});
+  const per=document.getElementById("tl-periods");per.innerHTML="";
+  const wpre=(TOTAL-PHAN)/TOTAL*100;const pre=document.createElement("div");pre.className="tl-seg";pre.style.width=wpre+"%";pre.style.background="#2a2416";pre.style.color="#a89870";pre.textContent=(lang==="es"?"Precámbrico":"Precambrian");per.appendChild(pre);
+  PERIODS.forEach(p=>{const w=(p.from-p.to)/TOTAL*100;const d=document.createElement("div");d.className="tl-seg";d.style.width=w+"%";d.style.background=p.color;d.style.color=txtColor(p.color);d.title=t(p);per.appendChild(d);});
+  const z=document.getElementById("tl-zoom");z.innerHTML="";
+  PERIODS.forEach(p=>{const w=(p.from-p.to)/PHAN*100;const d=document.createElement("div");d.className="tl-seg";d.style.width=w+"%";d.style.background=p.color;d.style.color=txtColor(p.color);d.title=t(p);d.innerHTML='<span>'+t(p)+'</span>';z.appendChild(d);});
+  const tk=document.getElementById("tl-ticks");tk.innerHTML="";
+  MILESTONES.filter(m=>m.type==="ext").forEach(m=>{const left=(PHAN-m.age)/PHAN*100;const d=document.createElement("div");d.className="tl-tick";d.style.left=left+"%";d.title=t(m.name)+" · "+m.age+" Ma";d.innerHTML='<span>💀</span>';tk.appendChild(d);});
+}
+initMap();
+</script>
+</body>
+</html>

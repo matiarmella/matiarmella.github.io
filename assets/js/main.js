@@ -114,6 +114,7 @@ function renderAll(){
   renderContrib();
   renderContact();
   renderNews();
+  renderDatos();
 }
 
 function applyStaticLabels(){
@@ -213,6 +214,23 @@ function renderContrib(){
   $('#cv-row').innerHTML = cfg.cvEnabled
     ? `<a href="${cfg.links.cv}" class="btn btn-ghost" download>${t(B.downloadCV)}</a>`
     : `<button class="btn btn-ghost" disabled title="coming soon">${t(B.downloadCV)}</button>`;
+}
+
+function renderDatos(){
+  const box=$('#datos-cards'); if(!box) return;
+  const items=[
+    {title:{en:"Deep time · Tucumán",es:"Tiempo profundo · Tucumán"},desc:{en:"An interactive activity: turn the whole history of Earth into a walk across Tucumán and see where each great moment of life falls. Bilingual, with a real map.",es:"Una actividad interactiva: convertí toda la historia de la Tierra en una caminata por Tucumán y mirá dónde cae cada gran momento de la vida. Bilingüe, con mapa real."},url:"actividades/tiempo-profundo-tucuman.html",status:"live"},
+    {title:{en:"Deep time · Catamarca",es:"Tiempo profundo · Catamarca"},desc:{en:"Coming soon.",es:"Próximamente."},status:"soon"},
+    {title:{en:"Deep time · Jujuy",es:"Tiempo profundo · Jujuy"},desc:{en:"Coming soon.",es:"Próximamente."},status:"soon"}
+  ];
+  const uc=lang==='es'?'En construcción':'Under construction';
+  const open=lang==='es'?'Abrir actividad →':'Open activity →';
+  box.innerHTML=items.map(it=>{
+    const head='<div class="datos-ct">'+t(it.title)+'</div><p class="datos-cd">'+t(it.desc)+'</p>';
+    return it.status==='live'
+      ? '<a class="datos-card live" href="'+it.url+'" target="_blank" rel="noopener">'+head+'<span class="datos-open">'+open+'</span></a>'
+      : '<div class="datos-card soon">'+head+'<span class="datos-badge">'+uc+'</span></div>';
+  }).join('');
 }
 
 function renderNews(){
