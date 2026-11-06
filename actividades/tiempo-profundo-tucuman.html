@@ -70,6 +70,62 @@
   .ph-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
   .credit{font-family:var(--mono);font-size:.6rem;color:var(--text-dim);margin-top:.2rem;line-height:1.5;padding:0 1.4rem 1.1rem;}
   @media(max-width:820px){.wrap{grid-template-columns:1fr;height:auto;}#map{height:50vh;}.panel{border-left:none;border-top:1px solid var(--line);}.htitle{font-size:1.8rem;}}
+.map-wrap{position:relative;width:100%;height:100%;}
+.dest-card{position:absolute;top:12px;left:12px;z-index:600;width:min(300px,72%);background:rgba(18,14,9,.93);backdrop-filter:blur(6px);border:1px solid var(--amber-dim);border-radius:6px;padding:.85rem;box-shadow:0 10px 34px rgba(0,0,0,.55);}
+.dest-card[hidden]{display:none;}
+.dc-tag{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:.5rem;}
+.dc-photo{height:118px;border-radius:4px;overflow:hidden;margin-bottom:.6rem;border:1px solid var(--line);}
+.dc-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.dc-name{font-family:var(--serif);font-size:1.3rem;font-weight:500;color:var(--cream);line-height:1.1;margin-bottom:.4rem;}
+.dc-blurb{font-size:.84rem;color:var(--cream-dim);line-height:1.6;}
+@media(max-width:820px){.dest-card{width:min(260px,58%);}.dc-photo{height:88px;}}
+
+/* ===== Layout para celulares ===== */
+@media(max-width:760px){
+  html,body{overflow-x:hidden;}
+  header{padding:1rem 1rem .7rem;}
+  .htitle{font-size:1.5rem;}
+  .hsub{font-size:.84rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+  .wrap{height:auto;}
+  #map{height:44vh;min-height:300px;}
+  .panel{padding:1rem;}
+  select{padding:.85rem;font-size:1rem;}
+  input[type=range]{height:34px;}
+  .now-age{font-size:1.8rem;}
+  .ne-text,.punch{font-size:.9rem;}
+  .timeline{padding:.7rem 1rem .9rem;}
+  .tl-title{font-size:.6rem;}
+  .tl-row.eras{height:30px;}
+  .tl-row.periods{height:26px;}
+  .tl-seg{font-size:.68rem;}
+  #tl-zoom{height:88px;}
+  #tl-zoom .tl-seg span{font-size:.62rem;}
+  .tl-tick{height:92px;}
+  #tl-ind2{height:92px !important;}
+  .dest-card{top:8px;left:8px;width:min(235px,66%);padding:.7rem;}
+  .dc-photo{height:66px;}
+  .dc-name{font-size:1.12rem;}
+  .dc-blurb{font-size:.79rem;}
+}
+.imglb{position:fixed;inset:0;z-index:2000;background:rgba(8,7,5,.95);display:none;align-items:center;justify-content:center;padding:2rem;cursor:zoom-out;}
+.imglb.open{display:flex;}
+.imglb img{max-width:95vw;max-height:88vh;object-fit:contain;border:1px solid var(--line);border-radius:4px;}
+.imglb-x{position:absolute;top:12px;right:18px;color:var(--cream);font-family:var(--mono);font-size:1.2rem;cursor:pointer;}
+.dc-photo{position:relative;cursor:zoom-in;}
+.dc-photo::after{content:'⤢';position:absolute;bottom:4px;right:6px;font-size:1rem;color:#fff;text-shadow:0 1px 3px #000;opacity:.9;pointer-events:none;}
+.ph-img{cursor:zoom-in;}
+.dc-head{display:flex;align-items:flex-start;gap:.5rem;}
+.dc-htext{flex:1;min-width:0;}
+.dc-toggle{display:none;flex:0 0 auto;width:26px;height:26px;border-radius:50%;border:1px solid var(--amber-dim);background:transparent;color:var(--amber);font-size:1.15rem;line-height:1;cursor:pointer;align-items:center;justify-content:center;}
+.dc-body{margin-top:.55rem;}
+@media(max-width:760px){
+  .dc-toggle{display:inline-flex;}
+  .dest-card{width:auto;max-width:70%;}
+  .dc-body{display:none;}
+  .dest-card.open .dc-body{display:block;}
+  .dest-card.open{width:min(300px,84%);max-width:84%;}
+  .dc-name{font-size:1rem;}
+}
 </style>
 </head>
 <body class="lang-en">
@@ -81,7 +137,7 @@
   <button class="lang-btn" id="lang" onclick="toggleLang()">ES</button>
 </header>
 <div class="wrap">
-  <div id="map"></div>
+  <div class="map-wrap"><div id="map"></div><div class="dest-card" id="dest-card" hidden></div></div>
   <div class="panel">
     <div class="ctl">
       <p class="step"><span class="es">1 · Elegí el destino (= hoy)</span><span class="en">1 · Pick the destination (= today)</span></p>
@@ -122,8 +178,9 @@
     <div class="tl-scale"><span>539 Ma</span><span><span class="es">Hoy</span><span class="en">Today</span></span></div>
   </div>
 </div>
-<p class="credit"><span class="es">Actividad educativa · Cátedra de Paleontología · Mapa © OpenStreetMap · Colores según la Carta Cronoestratigráfica Internacional (ICS). Distancias reales; fechas aproximadas.</span><span class="en">Educational activity · Paleontology course · Map © OpenStreetMap · Colours from the International Chronostratigraphic Chart (ICS). Real distances; approximate dates.</span></p>
+<p class="credit"><span class="es">Actividad educativa · Cátedra de Paleontología · Mapa satelital © Esri · Colores según la Carta Cronoestratigráfica Internacional (ICS). Distancias reales; fechas aproximadas.</span><span class="en">Educational activity · Paleontology course · Satellite map © Esri · Colours from the International Chronostratigraphic Chart (ICS). Real distances; approximate dates.</span></p>
 
+<div class="imglb" id="imglb"><img id="imglb-img" src="" alt=""><span class="imglb-x">✕</span></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 /* ===== CONFIG DE CIUDAD (editar para otra ciudad) ===== */
@@ -197,16 +254,16 @@ const PERIODS=[{es:"Cámbrico",en:"Cambrian",ab:"Cám",from:538.8,to:485.4,color
 let lang="en",map,routeLayer,traveler,dest=null,distM=0;const L_=L;
 function t(o){return o[lang];}
 function txtColor(hex){const c=hex.replace('#','');const r=parseInt(c.substr(0,2),16),g=parseInt(c.substr(2,2),16),b=parseInt(c.substr(4,2),16);return (0.299*r+0.587*g+0.114*b)>140?'#1a1408':'#fff';}
-function toggleLang(){lang=(lang==="es")?"en":"es";document.body.className="lang-"+lang;document.getElementById("lang").textContent=(lang==="es")?"EN":"ES";refreshSelectLabels();buildTimeline();if(dest){drawMilestones();onSlide();updateReadouts();}}
+function toggleLang(){lang=(lang==="es")?"en":"es";document.body.className="lang-"+lang;document.getElementById("lang").textContent=(lang==="es")?"EN":"ES";refreshSelectLabels();buildTimeline();if(dest){drawMilestones();onSlide();updateReadouts();updateDestCard();}}
 function initMap(){
   map=L_.map('map',{scrollWheelZoom:true,doubleClickZoom:false}).setView(CITY.center,CITY.zoom);
-  L_.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
+  L_.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Tiles © Esri'}).addTo(map);
   L_.marker(ORIGIN.coords,{icon:emojiIcon("🌍","#2fae63")}).addTo(map).bindPopup(popHTML({es:"Formación de la Tierra · "+ORIGIN.name.es,en:"Formation of Earth · "+ORIGIN.name.en},4600,ORIGIN.blurb,medSvg("planet"),"#421C52",ORIGIN.img));
   LANDMARKS.forEach(l=>{L_.circleMarker(l.coords,{radius:5,color:"#d4a843",weight:1,fillColor:"#d4a843",fillOpacity:.5}).addTo(map).bindPopup(popHTML(l.name,null,l.blurb,'<span class="ph-emoji">📍</span>',"#d4a843",l.img));});
   const sel=document.getElementById("dest");const o0=document.createElement("option");o0.value="";sel.appendChild(o0);
   LANDMARKS.filter(l=>l.preset).forEach(l=>{const idx=LANDMARKS.indexOf(l);const o=document.createElement("option");o.dataset.i=idx;sel.appendChild(o);});
   refreshSelectLabels();
-  map.on('dblclick',e=>setDestination(e.latlng,{es:"Punto elegido (hoy)",en:"Chosen point (today)"},null));
+  map.on('dblclick',e=>setDestination(e.latlng,{es:"Punto elegido (hoy)",en:"Chosen point (today)"},null,{es:"Un punto que elegiste en el mapa; representa el presente.",en:"A point you chose on the map; it represents the present."}));
   buildTimeline();
 }
 function refreshSelectLabels(){const sel=document.getElementById("dest");sel.options[0].textContent=(lang==="es")?"— elegí un lugar —":"— pick a place —";[...sel.options].forEach(o=>{if(o.dataset.i!=null)o.textContent=t(LANDMARKS[+o.dataset.i].name);});}
@@ -217,14 +274,26 @@ function fmtAge(a){if(a<=0)return(lang==="es")?"hoy":"today";if(a<1)return Math.
 function mediaHTML(iconHTML,tint,img){const im=img?'<img class="ph-img" src="'+img+'" alt="" onerror="this.remove()">':'';return '<div class="pop-ph" style="background:radial-gradient(circle at 50% 34%, '+tint+'40, #14100a 78%)">'+iconHTML+im+'</div>';}
 function popHTML(name,age,blurb,iconHTML,tint,img){const al=(age!=null)?'<div class="pop-age">'+fmtAge(age)+'</div>':'';return '<div class="pop-t"><span class="es">'+name.es+'</span><span class="en">'+name.en+'</span></div>'+al+'<div class="pop-b"><span class="es">'+blurb.es+'</span><span class="en">'+blurb.en+'</span></div>'+mediaHTML(iconHTML,tint,img);}
 function interp(frac){const a=ORIGIN.coords,b=dest.latlng;return[a[0]+(b.lat-a[0])*frac,a[1]+(b.lng-a[1])*frac];}
-function setDestination(latlng,name,img){dest={latlng:L_.latLng(latlng),name:name,img:img||null};distM=map.distance(ORIGIN.coords,dest.latlng);document.getElementById("results").style.display="block";drawMilestones();document.getElementById("slider").value=0;onSlide();updateReadouts();}
-function onSelect(){const o=document.getElementById("dest").selectedOptions[0];if(!o||o.dataset.i==null)return;const l=LANDMARKS[+o.dataset.i];setDestination(l.coords,l.name,l.img);}
+function setDestination(latlng,name,img,blurb){dest={latlng:L_.latLng(latlng),name:name,img:img||null,blurb:blurb||null};distM=map.distance(ORIGIN.coords,dest.latlng);document.getElementById("results").style.display="block";drawMilestones();document.getElementById("slider").value=0;onSlide();updateReadouts();updateDestCard();}
+function updateDestCard(){
+  var c=document.getElementById("dest-card"); if(!c) return;
+  if(!dest){ c.hidden=true; return; }
+  var ph = dest.img ? '<div class="dc-photo"><img src="'+dest.img+'" alt="" onerror="this.parentNode.remove()"></div>' : '';
+  var bl = dest.blurb ? '<div class="dc-blurb">'+t(dest.blurb)+'</div>' : '';
+  var tag = (lang==="es"?"Destino · hoy":"Destination · today");
+  c.innerHTML = '<div class="dc-head"><div class="dc-htext"><div class="dc-tag">'+tag+'</div><div class="dc-name">'+t(dest.name)+'</div></div><button class="dc-toggle" type="button" aria-label="ver más">+</button></div><div class="dc-body">'+ph+bl+'</div>';
+  c.classList.remove('open');
+  var tg=c.querySelector('.dc-toggle');
+  if(tg) tg.onclick=function(ev){ ev.stopPropagation(); var op=c.classList.toggle('open'); tg.textContent=op?'−':'+'; };
+  c.hidden=false;
+}
+function onSelect(){const o=document.getElementById("dest").selectedOptions[0];if(!o||o.dataset.i==null)return;const l=LANDMARKS[+o.dataset.i];setDestination(l.coords,l.name,l.img,l.blurb);}
 function drawMilestones(){
   if(routeLayer)map.removeLayer(routeLayer);routeLayer=L_.layerGroup().addTo(map);
   L_.polyline([ORIGIN.coords,dest.latlng],{color:"#d4a843",weight:2,dashArray:"4 6",opacity:.7}).addTo(routeLayer);
   MILESTONES.forEach(m=>{const frac=(TOTAL-m.age)/TOTAL;const ring=(m.type==="ext")?"#f0603f":"#d4a843";L_.marker(interp(frac),{icon:emojiIcon(EMOJI[m.key],ring)}).addTo(routeLayer).bindPopup(popHTML(m.name,m.age,m.blurb,medSvg(m.key),eraFor(m.age).color));});
   L_.marker(dest.latlng,{icon:emojiIcon("🏁")}).addTo(routeLayer).bindPopup(popHTML(dest.name,0,{es:"El final del viaje: el presente, hoy.",en:"The end of the trip: the present, today."},'<span class="ph-emoji">🏁</span>',"#F2F91D",dest.img));
-  traveler=L_.marker(ORIGIN.coords,{icon:emojiIcon("🔴","#f0603f")}).addTo(routeLayer);
+  traveler=L_.marker(ORIGIN.coords,{icon:emojiIcon("🔴","#f0603f"),zIndexOffset:1000}).addTo(routeLayer);
   map.fitBounds(L_.latLngBounds([ORIGIN.coords,dest.latlng]).pad(0.25));
 }
 function updateReadouts(){
@@ -263,6 +332,19 @@ function buildTimeline(){
   MILESTONES.filter(m=>m.type==="ext").forEach(m=>{const left=(PHAN-m.age)/PHAN*100;const d=document.createElement("div");d.className="tl-tick";d.style.left=left+"%";d.title=t(m.name)+" · "+m.age+" Ma";d.innerHTML='<span>💀</span>';tk.appendChild(d);});
 }
 initMap();
+(function(){
+  var lb=document.getElementById('imglb'), li=document.getElementById('imglb-img');
+  if(!lb) return;
+  function openImg(src){ if(!src) return; li.src=src; lb.classList.add('open'); }
+  function closeImg(){ lb.classList.remove('open'); li.src=''; }
+  document.addEventListener('click',function(e){
+    var im=e.target.closest ? e.target.closest('.dc-photo img, .ph-img') : null;
+    if(im){ e.stopPropagation(); openImg(im.getAttribute('src')); return; }
+    if(e.target===lb || (e.target.classList && e.target.classList.contains('imglb-x'))) closeImg();
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeImg(); });
+})();
+
 </script>
 </body>
 </html>

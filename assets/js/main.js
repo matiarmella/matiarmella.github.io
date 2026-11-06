@@ -221,8 +221,8 @@ function renderDatos(){
   const items=[
     {title:{en:"Deep time · Tucumán",es:"Tiempo profundo · Tucumán"},desc:{en:"An interactive activity: turn the whole history of Earth into a walk across Tucumán and see where each great moment of life falls. Bilingual, with a real map.",es:"Una actividad interactiva: convertí toda la historia de la Tierra en una caminata por Tucumán y mirá dónde cae cada gran momento de la vida. Bilingüe, con mapa real."},url:"actividades/tiempo-profundo-tucuman.html",status:"live"},
     {title:{en:"Early vertebrates",es:"Primeros vertebrados"},desc:{en:"Interactive cladogram of early vertebrates, from agnathans to tetrapods: each node reveals the synapomorphy that defines the group, its biochron, classification and the specimen from the lab.",es:"Cladograma interactivo de los primeros vertebrados, de los agnatos a los tetrápodos: cada nodo revela la sinapomorfía que define al grupo, su biocrón, clasificación y el ejemplar del práctico."},url:"actividades/primeros-vertebrados.html",status:"live"},
-    {title:{en:"Deep time · Catamarca",es:"Tiempo profundo · Catamarca"},desc:{en:"Coming soon.",es:"Próximamente."},status:"soon"},
-    {title:{en:"Deep time · Jujuy",es:"Tiempo profundo · Jujuy"},desc:{en:"Coming soon.",es:"Próximamente."},status:"soon"}
+    {title:{en:"Deep time · Jujuy",es:"Tiempo profundo · Jujuy"},desc:{en:"Walk the whole history of Earth across my home province, Jujuy: pick a spot and see where each great moment of life falls — with a few personal stops along the way.",es:"Recorré toda la historia de la Tierra a escala de mi provincia natal, Jujuy: elegí un lugar y mirá dónde cae cada gran momento de la vida, con algunas paradas personales en el camino."},url:"actividades/tiempo-profundo-jujuy.html",status:"live"},
+    {title:{en:"Deep time · Catamarca",es:"Tiempo profundo · Catamarca"},desc:{en:"Coming soon.",es:"Próximamente."},status:"soon"}
   ];
   const uc=lang==='es'?'En construcción':'Under construction';
   const open=lang==='es'?'Abrir actividad →':'Open activity →';
